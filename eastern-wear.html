@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="ELAHI CLOTHING — Eastern Wear Collection. Embroidered luxury, handcrafted lawns, chiffons, and heirloom craft for the modern woman.">
 <title>Eastern Wear — ELAHI CLOTHING</title>
+<link rel="stylesheet" href="navbar.css">
 
 <!-- Tailwind CSS CDN -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -348,14 +349,12 @@
     </a>
 
     <!-- Right icons -->
-    <div style="display:flex;align-items:center;gap:20px">
-      <a href="search.html" class="hidden lg:block eyebrow" style="font-size:9.5px;letter-spacing:0.22em;border:none;background:none;cursor:pointer;color:#1c1c1a" >Search</a>
-      <button class="hidden lg:block eyebrow" style="font-size:9.5px;letter-spacing:0.22em;border:none;background:none;cursor:pointer;color:#1c1c1a" onclick="showToast('Your wishlist has 0 items')">Wishlist</button>
-      <a href="account.html" class="hidden lg:block eyebrow" style="font-size:9.5px;letter-spacing:0.22em;text-decoration:none;color:#1c1c1a">Account</a>
-      <button class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em;border:none;background:none;cursor:pointer;color:#1c1c1a;position:relative" id="bag-btn" onclick="showToast('Your bag is empty')">
-        Bag
-        <span id="cart-badge">0</span>
-      </button>
+    <div class="navbar-actions">
+      <a href="search.html" class="nav-action desktop-action" aria-label="Search"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.2 4.2"/></svg><span>Search</span></a>
+      <a href="search.html" class="nav-action mobile-search-action" aria-label="Search" style="display:none"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="m16 16 4.2 4.2"/></svg></a>
+      <button class="nav-action desktop-action" onclick="showToast('Your wishlist has 0 items')" aria-label="Wishlist"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 4.8a5.5 5.5 0 0 0-7.8 0L12 5.9l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.3 1.1-1.1a5.5 5.5 0 0 0-.1-7.8Z"/></svg><span>Wishlist</span></button>
+      <a href="account.html" class="nav-action desktop-action" aria-label="Account"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 21a7 7 0 0 1 14 0"/></svg><span>Account</span></a>
+      <button class="nav-action mobile-bag-action" style="position:relative" id="bag-btn" onclick="showToast('Your bag is empty')" aria-label="Shopping bag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1 13H6L5 8Z"/><path d="M9 9V6a3 3 0 0 1 6 0v3"/></svg><span class="mobile-bag-label">Bag</span><span id="cart-badge">0</span></button>
     </div>
   </div>
 </header>
