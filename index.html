@@ -1,0 +1,1332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ELAHI CLOTHING — Pakistani craft, global wardrobe. Discover Eastern elegance and contemporary fashion.">
+<title>ELAHI CLOTHING — Elegance Beyond Boundaries</title>
+
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<!-- Tailwind Config -->
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ivory:   '#f7f3ee',
+          cream:   '#ede8e0',
+          sand:    '#d9d0c1',
+          burgundy:'#6b2737',
+          'burgundy-dark': '#4e1b27',
+          charcoal:'#1c1c1a',
+          'warm-gray': '#8a8178',
+          sage:    '#b5bfa8',
+          gold:    '#c9a86c',
+        },
+        fontFamily: {
+          display: ['"Cormorant Garamond"', 'serif'],
+          body:    ['Jost', 'sans-serif'],
+        }
+      }
+    }
+  }
+</script>
+
+<style>
+  /* ─── Base ─── */
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: #f7f3ee;
+    color: #1c1c1a;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ─── Typography ─── */
+  .font-display  { font-family: 'Cormorant Garamond', serif; }
+  .eyebrow {
+    font-family: 'Jost', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+  }
+
+  /* ─── Image Container ─── */
+  .img-wrap {
+    overflow: hidden;
+    background: #e8e1d6;
+    display: block;
+    position: relative;
+  }
+  .img-wrap img {
+    width: 100%; height: 100%;
+    object-fit: cover; object-position: top center;
+    display: block;
+    transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .img-wrap:hover img { transform: scale(1.06); }
+
+  /* ─── Announcement / Journal Ticker ─── */
+  .ticker-track {
+    display: flex;
+    width: max-content;
+    animation: ticker 32s linear infinite;
+  }
+  @keyframes ticker {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  .ticker-track:hover { animation-play-state: paused; }
+
+  /* ─── Hero ─── */
+  .hero-bg {
+    background-image:
+      linear-gradient(to right, rgba(28,28,26,0.72) 0%, rgba(28,28,26,0.28) 65%, rgba(28,28,26,0.05) 100%),
+      linear-gradient(to top,   rgba(28,28,26,0.55) 0%, transparent 50%),
+      url('https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1920&q=90&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center 25%;
+    background-attachment: fixed;
+  }
+
+  /* ─── Outline Button ─── */
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px;
+    border: 1px solid currentColor;
+    font-family: 'Jost', sans-serif;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    transition: background 0.28s, color 0.28s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+  }
+  .btn-outline.light:hover { background: rgba(247,243,238,0.15); }
+  .btn-outline.dark:hover  { background: #1c1c1a; color: #f7f3ee; }
+
+  /* ─── Solid Button ─── */
+  .btn-solid {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 14px 32px;
+    background: #6b2737; color: #f7f3ee;
+    font-family: 'Jost', sans-serif;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.28em; text-transform: uppercase;
+    transition: background 0.28s;
+    cursor: pointer;
+    white-space: nowrap;
+    text-decoration: none;
+    border: none;
+  }
+  .btn-solid:hover { background: #4e1b27; }
+
+  /* ─── Collection Card ─── */
+  .col-card { position: relative; overflow: hidden; display: block; }
+  .col-card .overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(28,28,26,0.72) 0%, rgba(28,28,26,0.1) 55%, transparent 100%);
+    transition: opacity 0.4s;
+    pointer-events: none;
+  }
+  .col-card:hover .overlay { opacity: 0.85; }
+  .col-card .card-img img { transition: transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+  .col-card:hover .card-img img { transform: scale(1.07); }
+  .col-card .arrow-icon {
+    position: absolute; top: 20px; right: 20px;
+    width: 40px; height: 40px; border-radius: 50%;
+    background: rgba(247,243,238,0.9);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px; color: #1c1c1a;
+    transform: scale(0.85); opacity: 0;
+    transition: transform 0.3s, opacity 0.3s;
+    z-index: 10;
+  }
+  .col-card:hover .arrow-icon { transform: scale(1); opacity: 1; }
+
+  /* ─── Product Card ─── */
+  .product-card { position: relative; }
+  .quick-add {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(28,28,26,0.92); color: #f7f3ee;
+    padding: 14px; text-align: center;
+    font-family: 'Jost', sans-serif;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    transform: translateY(100%);
+    transition: transform 0.32s cubic-bezier(0.16,1,0.3,1);
+    cursor: pointer; border: none; width: 100%;
+  }
+  .product-card:hover .quick-add { transform: translateY(0); }
+  .wish-btn {
+    position: absolute; top: 12px; right: 12px;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(247,243,238,0.92); border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; color: #1c1c1a;
+    transition: background 0.2s, transform 0.2s;
+    z-index: 5;
+  }
+  .wish-btn:hover { transform: scale(1.12); }
+  .wish-btn.saved { color: #6b2737; }
+
+  /* ─── Lookbook ─── */
+  .lookbook-panel { position: relative; overflow: hidden; }
+  .lookbook-panel .look-label {
+    position: absolute; top: 28px; left: 28px;
+    color: rgba(247,243,238,0.8);
+    font-family: 'Jost', sans-serif;
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    z-index: 5;
+  }
+
+  /* ─── Toast ─── */
+  #toast {
+    position: fixed; bottom: 28px; left: 50%;
+    transform: translateX(-50%) translateY(12px);
+    background: #1c1c1a; color: #f7f3ee;
+    padding: 14px 28px;
+    font-family: 'Jost', sans-serif;
+    font-size: 11px; font-weight: 400; letter-spacing: 0.08em;
+    white-space: nowrap; opacity: 0; pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s;
+    z-index: 999; box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  }
+  #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ─── Mobile Nav Drawer ─── */
+  #mobile-nav {
+    position: fixed; inset: 0; z-index: 100;
+    background: #f7f3ee;
+    transform: translateX(-100%);
+    transition: transform 0.45s cubic-bezier(0.16,1,0.3,1);
+    display: flex; flex-direction: column;
+    overflow-y: auto;
+  }
+  #mobile-nav.open { transform: translateX(0); }
+
+  /* ─── Scroll Reveal ─── */
+  .reveal {
+    opacity: 0; transform: translateY(28px);
+    transition: opacity 0.75s ease, transform 0.75s ease;
+  }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+  .reveal-delay-4 { transition-delay: 0.4s; }
+
+  /* ─── Nav links ─── */
+  nav a {
+    position: relative; padding-bottom: 2px;
+    text-decoration: none; color: inherit;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+  nav a::after {
+    content: ''; position: absolute; bottom: 0; left: 0;
+    width: 0; height: 1px; background: currentColor;
+    transition: width 0.28s;
+  }
+  nav a:hover::after { width: 100%; }
+
+  /* ─── Gold accent line ─── */
+  .gold-line {
+    display: inline-block; width: 44px; height: 1px;
+    background: #c9a86c; vertical-align: middle; margin-right: 14px;
+  }
+
+  /* ─── Newsletter input ─── */
+  .nl-input {
+    background: transparent; border: none;
+    border-bottom: 1px solid rgba(28,28,26,0.4);
+    padding: 12px 0; font-family: 'Jost', sans-serif;
+    font-size: 13px; font-weight: 300;
+    color: #1c1c1a; outline: none; width: 100%;
+    transition: border-color 0.25s;
+  }
+  .nl-input::placeholder { color: #8a8178; }
+  .nl-input:focus { border-bottom-color: #1c1c1a; }
+
+  /* ─── Footer links ─── */
+  footer a { color: inherit; text-decoration: none; transition: color 0.2s; }
+  footer a:hover { color: #c9a86c; }
+
+  /* ─── Cart badge ─── */
+  #cart-badge {
+    display: none; position: absolute; top: -6px; right: -8px;
+    background: #6b2737; color: white;
+    font-size: 9px; font-weight: 500; letter-spacing: 0;
+    width: 18px; height: 18px; border-radius: 50%;
+    align-items: center; justify-content: center;
+    transition: transform 0.2s;
+  }
+  #cart-badge.show { display: flex; }
+
+  /* ─── Section divider ─── */
+  .ruled { border-top: 1px solid rgba(28,28,26,0.1); }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     ANNOUNCEMENT BAR
+══════════════════════════════════════════ -->
+<div class="bg-burgundy text-ivory overflow-hidden" style="padding:10px 0">
+  <div class="ticker-track">
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em">DISCOVER EFFORTLESS ELEGANCE</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em">WORLDWIDE SHIPPING AVAILABLE</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em">COMPLIMENTARY DELIVERY ON ORDERS OVER PKR 12,000</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em">PAKISTANI CRAFT · GLOBAL STYLE</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+    <!-- duplicate for seamless loop -->
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em">DISCOVER EFFORTLESS ELEGANCE</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em">WORLDWIDE SHIPPING AVAILABLE</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em">COMPLIMENTARY DELIVERY ON ORDERS OVER PKR 12,000</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em">PAKISTANI CRAFT · GLOBAL STYLE</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header id="site-header" class="sticky top-0 z-50 bg-ivory border-b border-black/10 transition-all duration-300" style="backdrop-filter:blur(8px);background:rgba(247,243,238,0.97)">
+  <div class="max-w-screen-2xl mx-auto px-5 lg:px-12" style="height:76px;display:flex;align-items:center;justify-content:space-between">
+
+    <!-- Left nav (desktop) -->
+    <nav class="hidden lg:flex items-center gap-7">
+      <a href="#new-arrivals" class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em">New Arrivals</a>
+      <a href="#collections" class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em">Women</a>
+      <a href="#lookbook" class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em">Lookbook</a>
+      <a href="#collections" class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em">Collections</a>
+      <a href="#new-arrivals" class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em;color:#6b2737">Sale</a>
+    </nav>
+
+    <!-- Mobile menu button -->
+    <button id="menu-btn" class="lg:hidden eyebrow flex items-center gap-2.5" style="font-size:9.5px;letter-spacing:0.22em" aria-label="Open menu" aria-expanded="false">
+      <span style="display:flex;flex-direction:column;gap:5px">
+        <span style="display:block;width:20px;height:1px;background:#1c1c1a;transition:transform 0.3s" id="bar1"></span>
+        <span style="display:block;width:20px;height:1px;background:#1c1c1a;transition:transform 0.3s" id="bar2"></span>
+        <span style="display:block;width:12px;height:1px;background:#1c1c1a" id="bar3"></span>
+      </span>
+      Menu
+    </button>
+
+    <!-- Wordmark (centered) -->
+    <a href="#" style="position:absolute;left:50%;transform:translateX(-50%);text-align:center;text-decoration:none;color:inherit;user-select:none">
+      <span class="font-display" style="font-size:clamp(22px,3vw,30px);font-weight:400;letter-spacing:0.22em;line-height:1;display:block">ELAHI</span>
+      <span class="eyebrow" style="font-size:7px;letter-spacing:0.5em;display:block;margin-top:2px">CLOTHING</span>
+    </a>
+
+    <!-- Right icons -->
+    <div style="display:flex;align-items:center;gap:20px">
+      <button class="hidden md:block eyebrow" style="font-size:9.5px;letter-spacing:0.22em;border:none;background:none;cursor:pointer;color:#1c1c1a" onclick="showToast('Search coming soon')">Search</button>
+      <button class="hidden sm:block eyebrow" style="font-size:9.5px;letter-spacing:0.22em;border:none;background:none;cursor:pointer;color:#1c1c1a" onclick="showToast('Your wishlist is empty')">Wishlist</button>
+      <button class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em;border:none;background:none;cursor:pointer;color:#1c1c1a;position:relative" id="bag-btn" onclick="showToast('Your bag is empty')">
+        Bag
+        <span id="cart-badge">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     MOBILE NAV DRAWER
+══════════════════════════════════════════ -->
+<div id="mobile-nav" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:76px;border-bottom:1px solid rgba(28,28,26,0.1)">
+    <span class="font-display" style="font-size:28px;letter-spacing:0.22em">ELAHI</span>
+    <button id="close-menu" class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em;border:none;background:none;cursor:pointer;color:#1c1c1a" aria-label="Close menu">Close ✕</button>
+  </div>
+  <nav style="display:flex;flex-direction:column;padding:36px 24px;gap:28px">
+    <a href="#new-arrivals" class="mobile-nav-link font-display" style="font-size:clamp(28px,8vw,42px);font-weight:300;letter-spacing:0.03em;text-decoration:none;color:#1c1c1a;border-bottom:1px solid rgba(28,28,26,0.08);padding-bottom:20px">New Arrivals</a>
+    <a href="#collections" class="mobile-nav-link font-display" style="font-size:clamp(28px,8vw,42px);font-weight:300;letter-spacing:0.03em;text-decoration:none;color:#1c1c1a;border-bottom:1px solid rgba(28,28,26,0.08);padding-bottom:20px">Women</a>
+    <a href="#lookbook" class="mobile-nav-link font-display" style="font-size:clamp(28px,8vw,42px);font-weight:300;letter-spacing:0.03em;text-decoration:none;color:#1c1c1a;border-bottom:1px solid rgba(28,28,26,0.08);padding-bottom:20px">Lookbook</a>
+    <a href="#collections" class="mobile-nav-link font-display" style="font-size:clamp(28px,8vw,42px);font-weight:300;letter-spacing:0.03em;text-decoration:none;color:#1c1c1a;border-bottom:1px solid rgba(28,28,26,0.08);padding-bottom:20px">Collections</a>
+    <a href="#story" class="mobile-nav-link font-display" style="font-size:clamp(28px,8vw,42px);font-weight:300;letter-spacing:0.03em;text-decoration:none;color:#1c1c1a;border-bottom:1px solid rgba(28,28,26,0.08);padding-bottom:20px">Our Story</a>
+    <a href="#new-arrivals" class="mobile-nav-link font-display" style="font-size:clamp(28px,8vw,42px);font-weight:300;letter-spacing:0.03em;text-decoration:none;color:#6b2737;padding-bottom:20px">Sale</a>
+  </nav>
+  <div style="margin-top:auto;padding:28px 24px;border-top:1px solid rgba(28,28,26,0.1)">
+    <p class="eyebrow" style="color:#8a8178;font-size:9px;margin-bottom:14px">Follow us</p>
+    <div style="display:flex;gap:20px">
+      <a href="#" class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em;text-decoration:none;color:#1c1c1a">Instagram</a>
+      <a href="#" class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em;text-decoration:none;color:#1c1c1a">Pinterest</a>
+      <a href="#" class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em;text-decoration:none;color:#1c1c1a">Facebook</a>
+    </div>
+  </div>
+</div>
+<div id="nav-overlay" style="position:fixed;inset:0;z-index:40;background:rgba(0,0,0,0.3);opacity:0;pointer-events:none;transition:opacity 0.3s"></div>
+
+<!-- ══════════════════════════════════════════
+     HERO
+══════════════════════════════════════════ -->
+<section class="hero-bg" style="min-height:92vh;display:flex;align-items:flex-end;position:relative">
+
+  <!-- Right editorial text -->
+  <div style="position:absolute;top:40px;right:28px;display:none" class="lg:block">
+    <span class="eyebrow" style="font-size:8.5px;letter-spacing:0.3em;color:rgba(247,243,238,0.5);writing-mode:vertical-rl;transform:rotate(180deg);display:block">PAKISTAN — WORLDWIDE</span>
+  </div>
+
+  <!-- Content -->
+  <div style="position:relative;width:100%;max-width:1500px;margin:0 auto;padding:0 24px 64px;padding-bottom:clamp(48px,8vh,96px)">
+    <div style="max-width:760px">
+      <p class="eyebrow reveal" style="color:#c9a86c;letter-spacing:0.3em;margin-bottom:20px;display:flex;align-items:center;gap:0">
+        <span class="gold-line" style="background:rgba(201,168,108,0.7)"></span>Pakistani Roots. Global Style.
+      </p>
+      <h1 class="font-display reveal reveal-delay-1" style="color:white;line-height:0.88;font-size:clamp(4rem,10vw,10rem);font-weight:300;letter-spacing:-0.02em">
+        Elegance<br><em style="font-weight:300">Beyond</em><br>Boundaries.
+      </h1>
+      <p class="reveal reveal-delay-2" style="margin-top:28px;color:rgba(247,243,238,0.72);max-width:360px;line-height:1.75;font-size:13px;font-weight:300">
+        Where the soul of Pakistani craft meets a contemporary global wardrobe. Designed for the woman who moves between worlds.
+      </p>
+      <div class="reveal reveal-delay-3" style="margin-top:36px;display:flex;flex-wrap:wrap;gap:14px">
+        <a href="#collections" class="btn-outline light" style="color:white;border-color:rgba(247,243,238,0.65)">Explore Collection ↗</a>
+        <a href="#new-arrivals" class="btn-solid">New Arrivals</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     DARK MARQUEE STRIP
+══════════════════════════════════════════ -->
+<div style="background:#1c1c1a;overflow:hidden;padding:16px 0;border-top:1px solid rgba(28,28,26,0.3)">
+  <div class="ticker-track" style="animation-duration:40s">
+    <span class="eyebrow" style="padding:0 28px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">THE ART OF GETTING DRESSED</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 6px">✦</span>
+    <span class="eyebrow" style="padding:0 28px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">ROOTED IN HERITAGE</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 6px">✦</span>
+    <span class="eyebrow" style="padding:0 28px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">MADE TO BE REMEMBERED</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 6px">✦</span>
+    <span class="eyebrow" style="padding:0 28px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">CRAFTED FOR EVERY EXPRESSION</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 6px">✦</span>
+    <span class="eyebrow" style="padding:0 28px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">EFFORTLESS LUXURY</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 6px">✦</span>
+    <!-- duplicate -->
+    <span class="eyebrow" style="padding:0 28px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">THE ART OF GETTING DRESSED</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 6px">✦</span>
+    <span class="eyebrow" style="padding:0 28px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">ROOTED IN HERITAGE</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 6px">✦</span>
+    <span class="eyebrow" style="padding:0 28px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">MADE TO BE REMEMBERED</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 6px">✦</span>
+    <span class="eyebrow" style="padding:0 28px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">CRAFTED FOR EVERY EXPRESSION</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 6px">✦</span>
+    <span class="eyebrow" style="padding:0 28px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">EFFORTLESS LUXURY</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 6px">✦</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SHOP BY COLLECTION
+══════════════════════════════════════════ -->
+<section id="collections" class="max-w-screen-2xl mx-auto px-5 lg:px-12 py-24 lg:py-36">
+  <!-- Section header -->
+  <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-14 gap-6">
+    <div>
+      <p class="eyebrow reveal" style="color:#6b2737;letter-spacing:0.28em;display:flex;align-items:center">
+        <span class="gold-line"></span>Four ways to dress
+      </p>
+      <h2 class="font-display mt-4 reveal reveal-delay-1" style="font-size:clamp(2.8rem,7vw,7rem);font-weight:300;line-height:0.9">
+        A wardrobe,<br><em>reimagined.</em>
+      </h2>
+    </div>
+    <p class="reveal reveal-delay-2" style="color:#8a8178;line-height:1.75;max-width:260px;font-size:12px;font-weight:300">
+      Four moods. Endless ways to make them yours. From heirloom-inspired Eastern pieces to sharp contemporary silhouettes.
+    </p>
+  </div>
+
+  <!-- Asymmetric grid -->
+  <div class="grid grid-cols-2 lg:grid-cols-12 gap-3 sm:gap-4">
+
+    <!-- Card 1: Eastern Elegance (large, left) -->
+    <a href="#new-arrivals" class="col-card lg:col-span-5 reveal">
+      <div class="card-img img-wrap" style="aspect-ratio:4/5;height:100%">
+        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=900&q=90&auto=format&fit=crop"
+             alt="Eastern Elegance — embroidered Pakistani fashion"
+             onerror="this.src='https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=85'">
+      </div>
+      <div class="overlay"></div>
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:28px;color:white;z-index:10">
+        <p class="eyebrow" style="font-size:9px;letter-spacing:0.28em;color:rgba(201,168,108,0.9);margin-bottom:10px">01 / Eastern</p>
+        <h3 class="font-display" style="font-size:clamp(2rem,4vw,3.2rem);font-weight:300;letter-spacing:0.03em;line-height:1.05">Eastern<br>Elegance</h3>
+        <p style="margin-top:10px;color:rgba(255,255,255,0.65);font-size:11px;font-weight:300">Luxurious embroidery, heirloom craft</p>
+      </div>
+      <div class="arrow-icon">↗</div>
+    </a>
+
+    <!-- Middle column -->
+    <div class="col-span-2 lg:col-span-4 flex flex-col gap-3 sm:gap-4">
+
+      <!-- Card 2: Western Essentials -->
+      <a href="#new-arrivals" class="col-card reveal reveal-delay-1">
+        <div class="card-img img-wrap" style="aspect-ratio:16/10">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=90&auto=format&fit=crop"
+               alt="Western Essentials"
+               onerror="this.src='https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=900&q=85'">
+        </div>
+        <div class="overlay"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;color:white;z-index:10">
+          <p class="eyebrow" style="font-size:9px;letter-spacing:0.28em;color:rgba(201,168,108,0.9);margin-bottom:8px">02 / Western</p>
+          <h3 class="font-display" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;letter-spacing:0.03em">Western Essentials</h3>
+        </div>
+        <div class="arrow-icon">↗</div>
+      </a>
+
+      <!-- Card 3: Editorial accent tile -->
+      <a href="#new-arrivals" class="reveal reveal-delay-2" style="position:relative;display:flex;flex-direction:column;justify-content:space-between;background:#ede8e0;padding:28px;min-height:150px;overflow:hidden;text-decoration:none;color:inherit;transition:color 0.3s" id="accent-tile">
+        <div id="accent-bg" style="position:absolute;inset:0;background:#6b2737;transform:translateX(-100%);transition:transform 0.5s cubic-bezier(0.16,1,0.3,1)"></div>
+        <div style="position:relative;z-index:2">
+          <p class="eyebrow" id="accent-eyebrow" style="font-size:9px;letter-spacing:0.28em;color:#6b2737;transition:color 0.3s">04 / Just arrived</p>
+          <h3 class="font-display" id="accent-h3" style="font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;margin-top:10px;transition:color 0.3s">New energy.</h3>
+        </div>
+        <div style="position:relative;z-index:2;align-self:flex-end">
+          <span id="accent-arrow" style="font-size:1.5rem;transition:color 0.3s">↗</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- Card 4: Modern Collection (tall right) -->
+    <a href="#new-arrivals" class="col-card col-span-2 lg:col-span-3 lg:mt-16 reveal reveal-delay-2">
+      <div class="card-img img-wrap" style="aspect-ratio:4/5;height:100%">
+        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=90&auto=format&fit=crop"
+             alt="Modern Collection"
+             onerror="this.src='https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=900&q=85'">
+      </div>
+      <div class="overlay"></div>
+      <div style="position:absolute;bottom:0;left:0;right:0;padding:22px;color:white;z-index:10">
+        <p class="eyebrow" style="font-size:9px;letter-spacing:0.28em;color:rgba(201,168,108,0.9);margin-bottom:8px">03 / Modern</p>
+        <h3 class="font-display" style="font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;letter-spacing:0.03em">Modern<br>Collection</h3>
+        <p style="margin-top:8px;color:rgba(255,255,255,0.65);font-size:11px;font-weight:300">Contemporary silhouettes</p>
+      </div>
+      <div class="arrow-icon">↗</div>
+    </a>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     EDITORIAL PULL QUOTE
+══════════════════════════════════════════ -->
+<div style="background:#ede8e0;border-top:1px solid rgba(28,28,26,0.1);padding:72px 20px">
+  <div style="max-width:720px;margin:0 auto;text-align:center" class="reveal">
+    <span style="color:#c9a86c;font-size:7px;letter-spacing:0.4em">✦ &nbsp; ✦ &nbsp; ✦</span>
+    <blockquote class="font-display" style="margin-top:20px;font-size:clamp(1.8rem,4vw,3.5rem);font-weight:300;line-height:1.15;letter-spacing:0.01em">
+      "Dressed in intention.<br><em>Made for every expression.</em>"
+    </blockquote>
+    <p class="eyebrow" style="color:#8a8178;margin-top:20px;font-size:9px;letter-spacing:0.3em">— THE ELAHI PHILOSOPHY</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BESTSELLERS / PRODUCTS
+══════════════════════════════════════════ -->
+<section id="new-arrivals" style="background:#e8e2d9;padding:clamp(60px,8vw,128px) 0">
+  <div class="max-w-screen-2xl mx-auto px-5 lg:px-12">
+
+    <!-- Header -->
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
+      <div>
+        <p class="eyebrow reveal" style="color:#6b2737;letter-spacing:0.28em;display:flex;align-items:center">
+          <span class="gold-line"></span>The current obsessions
+        </p>
+        <h2 class="font-display mt-4 reveal reveal-delay-1" style="font-size:clamp(2.5rem,6vw,6rem);font-weight:300;line-height:0.92">
+          Worth a closer<br><em>look.</em>
+        </h2>
+      </div>
+      <a href="#collections" class="eyebrow reveal reveal-delay-2" style="font-size:9.5px;letter-spacing:0.22em;border-bottom:1px solid #1c1c1a;padding-bottom:6px;width:fit-content;text-decoration:none;color:#1c1c1a;transition:color 0.2s,border-color 0.2s" onmouseover="this.style.color='#6b2737';this.style.borderColor='#6b2737'" onmouseout="this.style.color='#1c1c1a';this.style.borderColor='#1c1c1a'">
+        Shop all pieces ↗
+      </a>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-12 lg:gap-x-6">
+
+      <!-- Product 1 -->
+      <article class="product-card reveal">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=750&q=90&auto=format&fit=crop"
+               alt="Noor Embroidered Suit"
+               style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)"
+               onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"
+               onerror="this.parentElement.innerHTML=placeholderImg('Noor Embroidered Suit')">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#f7f3ee;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">Bestseller</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Noor Embroidered Suit')" aria-label="Wishlist">♡</button>
+          <button class="quick-add" onclick="addToCart('Noor Embroidered Suit')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div>
+            <h3 style="font-size:13px;font-weight:400;letter-spacing:0.02em">Noor Embroidered Suit</h3>
+            <p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Ivory · 3 piece</p>
+          </div>
+          <span class="eyebrow" style="font-size:10px;letter-spacing:0.08em;font-weight:500;white-space:nowrap">PKR 8,900</span>
+        </div>
+      </article>
+
+      <!-- Product 2 -->
+      <article class="product-card reveal reveal-delay-1">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=750&q=90&auto=format&fit=crop"
+               alt="Aira Co-ord Set"
+               style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)"
+               onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"
+               onerror="this.parentElement.innerHTML=placeholderImg('Aira Co-ord Set')">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#c9a86c;color:white;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">Just In</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Aira Co-ord Set')" aria-label="Wishlist">♡</button>
+          <button class="quick-add" onclick="addToCart('Aira Co-ord Set')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div>
+            <h3 style="font-size:13px;font-weight:400;letter-spacing:0.02em">Aira Co-ord Set</h3>
+            <p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Sand · 2 piece</p>
+          </div>
+          <span class="eyebrow" style="font-size:10px;letter-spacing:0.08em;font-weight:500;white-space:nowrap">PKR 6,500</span>
+        </div>
+      </article>
+
+      <!-- Product 3 -->
+      <article class="product-card reveal reveal-delay-2">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=750&q=90&auto=format&fit=crop"
+               alt="Elan Everyday Shirt"
+               style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)"
+               onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"
+               onerror="this.parentElement.innerHTML=placeholderImg('Elan Everyday Shirt')">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#6b2737;color:white;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">−20%</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Elan Everyday Shirt')" aria-label="Wishlist">♡</button>
+          <button class="quick-add" onclick="addToCart('Elan Everyday Shirt')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div>
+            <h3 style="font-size:13px;font-weight:400;letter-spacing:0.02em">Elan Everyday Shirt</h3>
+            <p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Olive · Relaxed fit</p>
+          </div>
+          <div style="text-align:right">
+            <span class="eyebrow" style="font-size:10px;letter-spacing:0.08em;font-weight:500;white-space:nowrap;display:block">PKR 4,200</span>
+            <span class="eyebrow" style="font-size:9px;letter-spacing:0.06em;color:#8a8178;text-decoration:line-through;display:block">PKR 5,250</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Product 4 -->
+      <article class="product-card reveal reveal-delay-3">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=750&q=90&auto=format&fit=crop"
+               alt="Zara Printed Maxi"
+               style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)"
+               onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"
+               onerror="this.parentElement.innerHTML=placeholderImg('Zara Printed Maxi')">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#f7f3ee;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">Limited</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Zara Printed Maxi')" aria-label="Wishlist">♡</button>
+          <button class="quick-add" onclick="addToCart('Zara Printed Maxi')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div>
+            <h3 style="font-size:13px;font-weight:400;letter-spacing:0.02em">Zara Printed Maxi</h3>
+            <p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Printed · Flowing</p>
+          </div>
+          <span class="eyebrow" style="font-size:10px;letter-spacing:0.08em;font-weight:500;white-space:nowrap">PKR 7,200</span>
+        </div>
+      </article>
+
+      <!-- Product 5 -->
+      <article class="product-card reveal">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=750&q=90&auto=format&fit=crop"
+               alt="Layla Lawn Suit"
+               style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)"
+               onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"
+               onerror="this.parentElement.innerHTML=placeholderImg('Layla Lawn Suit')">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#f7f3ee;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">New</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Layla Lawn Suit')" aria-label="Wishlist">♡</button>
+          <button class="quick-add" onclick="addToCart('Layla Lawn Suit')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div>
+            <h3 style="font-size:13px;font-weight:400;letter-spacing:0.02em">Layla Lawn Suit</h3>
+            <p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Blush · 3 piece</p>
+          </div>
+          <span class="eyebrow" style="font-size:10px;letter-spacing:0.08em;font-weight:500;white-space:nowrap">PKR 5,800</span>
+        </div>
+      </article>
+
+      <!-- Product 6 -->
+      <article class="product-card reveal reveal-delay-1">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=750&q=90&auto=format&fit=crop"
+               alt="Farah Chiffon Dupatta Set"
+               style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)"
+               onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"
+               onerror="this.parentElement.innerHTML=placeholderImg('Farah Chiffon Dupatta Set')">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#c9a86c;color:white;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">Staff Pick</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Farah Chiffon Dupatta Set')" aria-label="Wishlist">♡</button>
+          <button class="quick-add" onclick="addToCart('Farah Chiffon Dupatta Set')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div>
+            <h3 style="font-size:13px;font-weight:400;letter-spacing:0.02em">Farah Chiffon Dupatta Set</h3>
+            <p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Ivory · 2 piece</p>
+          </div>
+          <span class="eyebrow" style="font-size:10px;letter-spacing:0.08em;font-weight:500;white-space:nowrap">PKR 9,500</span>
+        </div>
+      </article>
+
+      <!-- Product 7 -->
+      <article class="product-card reveal reveal-delay-2">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1573612664822-d7d347da7b80?w=750&q=90&auto=format&fit=crop"
+               alt="Sana Embellished Kurta"
+               style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)"
+               onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"
+               onerror="this.parentElement.innerHTML=placeholderImg('Sana Embellished Kurta')">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#6b2737;color:white;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">Sale</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Sana Embellished Kurta')" aria-label="Wishlist">♡</button>
+          <button class="quick-add" onclick="addToCart('Sana Embellished Kurta')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div>
+            <h3 style="font-size:13px;font-weight:400;letter-spacing:0.02em">Sana Embellished Kurta</h3>
+            <p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Emerald · Classic</p>
+          </div>
+          <div style="text-align:right">
+            <span class="eyebrow" style="font-size:10px;letter-spacing:0.08em;font-weight:500;white-space:nowrap;display:block">PKR 3,900</span>
+            <span class="eyebrow" style="font-size:9px;letter-spacing:0.06em;color:#8a8178;text-decoration:line-through;display:block">PKR 5,500</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Product 8 -->
+      <article class="product-card reveal reveal-delay-3">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=750&q=90&auto=format&fit=crop"
+               alt="Rania Contemporary Top"
+               style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)"
+               onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'"
+               onerror="this.parentElement.innerHTML=placeholderImg('Rania Contemporary Top')">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#f7f3ee;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">New</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Rania Contemporary Top')" aria-label="Wishlist">♡</button>
+          <button class="quick-add" onclick="addToCart('Rania Contemporary Top')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div>
+            <h3 style="font-size:13px;font-weight:400;letter-spacing:0.02em">Rania Contemporary Top</h3>
+            <p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Cream · Modern fit</p>
+          </div>
+          <span class="eyebrow" style="font-size:10px;letter-spacing:0.08em;font-weight:500;white-space:nowrap">PKR 3,200</span>
+        </div>
+      </article>
+
+    </div><!-- /grid -->
+
+    <div style="margin-top:60px;text-align:center" class="reveal">
+      <a href="#collections" class="btn-outline dark" style="border-color:#1c1c1a;color:#1c1c1a">View All Products ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     EDITORIAL FULL-BLEED BANNER
+══════════════════════════════════════════ -->
+<section style="position:relative;overflow:hidden;min-height:70vh;display:flex;align-items:center">
+  <div style="position:absolute;inset:0">
+    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1920&q=90&auto=format&fit=crop"
+         alt="Crafted for Every Expression"
+         style="width:100%;height:100%;object-fit:cover;object-position:center"
+         onerror="this.src='https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1920&q=85'">
+    <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(28,28,26,0.78) 0%,rgba(28,28,26,0.42) 55%,rgba(28,28,26,0.1) 100%)"></div>
+  </div>
+  <div style="position:relative;width:100%;max-width:1500px;margin:0 auto;padding:80px 24px">
+    <div style="max-width:520px;color:white">
+      <p class="eyebrow reveal" style="color:#c9a86c;letter-spacing:0.3em;display:flex;align-items:center">
+        <span class="gold-line" style="background:rgba(201,168,108,0.7)"></span>The Elahi Edit
+      </p>
+      <h2 class="font-display reveal reveal-delay-1" style="margin-top:18px;line-height:0.9;font-size:clamp(3rem,7vw,7rem);font-weight:300">
+        Crafted for<br><em>Every Expression.</em>
+      </h2>
+      <p class="reveal reveal-delay-2" style="margin-top:22px;color:rgba(255,255,255,0.68);max-width:360px;line-height:1.75;font-size:13px;font-weight:300">
+        Each piece begins as an idea — to dress the woman who refuses to choose between heritage and modernity.
+      </p>
+      <a href="#collections" class="btn-outline light reveal reveal-delay-3" style="color:white;border-color:rgba(255,255,255,0.65);margin-top:30px;display:inline-flex">
+        Discover the Collection ↗
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     INTERNATIONAL / CONTEMPORARY
+══════════════════════════════════════════ -->
+<section style="background:#f0ebe3;padding:clamp(60px,8vw,128px) 0">
+  <div class="max-w-screen-2xl mx-auto px-5 lg:px-12">
+
+    <div style="text-align:center;margin-bottom:60px" class="reveal">
+      <p class="eyebrow" style="color:#6b2737;letter-spacing:0.28em;display:flex;align-items:center;justify-content:center;gap:0">
+        <span class="gold-line"></span>International Collection<span class="gold-line" style="margin-right:0;margin-left:14px"></span>
+      </p>
+      <h2 class="font-display" style="margin-top:16px;font-size:clamp(2.5rem,6vw,6rem);font-weight:300;line-height:0.92;letter-spacing:0.01em">
+        Contemporary,<br><em>without losing the line.</em>
+      </h2>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-6 lg:gap-10">
+
+      <!-- Left: tall image -->
+      <div class="col-card reveal">
+        <div class="card-img img-wrap" style="aspect-ratio:4/5;min-height:460px">
+          <img src="https://images.unsplash.com/photo-1537832816519-689ad163238b?w=900&q=90&auto=format&fit=crop"
+               alt="Contemporary collection"
+               onerror="this.src='https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=85'">
+        </div>
+        <div class="overlay"></div>
+        <div style="position:absolute;bottom:0;left:0;right:0;padding:32px;color:white;z-index:10">
+          <p class="eyebrow" style="font-size:9px;letter-spacing:0.28em;color:rgba(201,168,108,0.9);margin-bottom:12px">The global edit</p>
+          <h3 class="font-display" style="font-size:clamp(2rem,4vw,3rem);font-weight:300">Contemporary<br>Collection 2026</h3>
+          <a href="#new-arrivals" class="eyebrow" style="font-size:9px;letter-spacing:0.22em;color:rgba(255,255,255,0.75);border-bottom:1px solid rgba(255,255,255,0.35);padding-bottom:3px;margin-top:14px;display:inline-block;text-decoration:none">Shop Now ↗</a>
+        </div>
+      </div>
+
+      <!-- Right: 2x2 grid -->
+      <div class="grid grid-cols-2 gap-4 reveal reveal-delay-1">
+
+        <a href="#new-arrivals" class="col-card">
+          <div class="card-img img-wrap" style="aspect-ratio:1/1">
+            <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=600&q=85&auto=format&fit=crop"
+                 alt="Contemporary Tops"
+                 onerror="this.src='https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=85'">
+          </div>
+          <div class="overlay"></div>
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:18px;color:white;z-index:10">
+            <p class="eyebrow" style="font-size:8.5px;letter-spacing:0.22em">Contemporary</p>
+            <h3 class="font-display" style="font-size:1.6rem;font-weight:300;margin-top:4px">Tops</h3>
+          </div>
+        </a>
+
+        <a href="#new-arrivals" class="col-card">
+          <div class="card-img img-wrap" style="aspect-ratio:1/1">
+            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=600&q=85&auto=format&fit=crop"
+                 alt="Premium Co-ord Sets"
+                 onerror="this.src='https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=85'">
+          </div>
+          <div class="overlay"></div>
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:18px;color:white;z-index:10">
+            <p class="eyebrow" style="font-size:8.5px;letter-spacing:0.22em">Premium</p>
+            <h3 class="font-display" style="font-size:1.6rem;font-weight:300;margin-top:4px">Co-ord Sets</h3>
+          </div>
+        </a>
+
+        <a href="#new-arrivals" class="col-card">
+          <div class="card-img img-wrap" style="aspect-ratio:1/1">
+            <img src="https://images.unsplash.com/photo-1573612664822-d7d347da7b80?w=600&q=85&auto=format&fit=crop"
+                 alt="Occasion Wear"
+                 onerror="this.src='https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=600&q=85'">
+          </div>
+          <div class="overlay"></div>
+          <div style="position:absolute;bottom:0;left:0;right:0;padding:18px;color:white;z-index:10">
+            <p class="eyebrow" style="font-size:8.5px;letter-spacing:0.22em">Occasion</p>
+            <h3 class="font-display" style="font-size:1.6rem;font-weight:300;margin-top:4px">Wear</h3>
+          </div>
+        </a>
+
+        <!-- Accent tile -->
+        <a href="#new-arrivals" id="intl-accent" style="position:relative;background:#6b2737;display:flex;flex-direction:column;justify-content:space-between;padding:22px;overflow:hidden;text-decoration:none">
+          <div id="intl-accent-bg" style="position:absolute;inset:0;background:#4e1b27;transform:scaleY(0);transform-origin:bottom;transition:transform 0.5s cubic-bezier(0.16,1,0.3,1)"></div>
+          <div style="position:relative;z-index:2">
+            <span style="color:#c9a86c;font-size:7px">✦</span>
+            <p class="eyebrow" style="color:rgba(201,168,108,0.8);font-size:8.5px;letter-spacing:0.22em;margin-top:10px">Exclusively</p>
+            <h3 class="font-display" style="color:#f7f3ee;font-size:1.6rem;font-weight:300;margin-top:4px">New In</h3>
+          </div>
+          <div style="position:relative;z-index:2;align-self:flex-end">
+            <span class="eyebrow" style="color:rgba(247,243,238,0.65);border-bottom:1px solid rgba(247,243,238,0.3);padding-bottom:3px;font-size:9px;letter-spacing:0.22em">View all ↗</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     LOOKBOOK
+══════════════════════════════════════════ -->
+<section id="lookbook" style="background:#1c1c1a;color:#f7f3ee;padding:clamp(60px,8vw,128px) 0">
+  <div class="max-w-screen-2xl mx-auto px-5 lg:px-12">
+
+    <!-- Header -->
+    <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between mb-16 gap-6">
+      <div>
+        <p class="eyebrow reveal" style="color:#c9a86c;letter-spacing:0.28em;display:flex;align-items:center">
+          <span class="gold-line" style="background:#c9a86c"></span>The Lookbook
+        </p>
+        <h2 class="font-display mt-4 reveal reveal-delay-1" style="font-size:clamp(2.5rem,6vw,6rem);font-weight:300;line-height:0.92">
+          Three looks.<br><em>One wardrobe.</em>
+        </h2>
+      </div>
+      <p class="reveal reveal-delay-2" style="color:rgba(247,243,238,0.5);max-width:260px;line-height:1.75;font-size:12px;font-weight:300">
+        How to wear ELAHI, your way. Season 01 — 2026.
+      </p>
+    </div>
+
+    <!-- Look 01 -->
+    <div class="grid lg:grid-cols-2 gap-6 lg:gap-16 items-center mb-20">
+      <div class="lookbook-panel img-wrap reveal" style="aspect-ratio:4/5">
+        <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1000&q=90&auto=format&fit=crop"
+             alt="Look 01 — Timeless Traditions"
+             onerror="this.src='https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=1000&q=85'">
+        <span class="look-label">LOOK 01</span>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <p class="eyebrow" style="color:#c9a86c;font-size:9px;letter-spacing:0.3em">The first look</p>
+        <h3 class="font-display" style="color:#f7f3ee;margin-top:14px;font-size:clamp(2.2rem,5vw,5rem);font-weight:300;line-height:0.95">
+          Timeless<br><em>Traditions.</em>
+        </h3>
+        <p style="margin-top:20px;color:rgba(247,243,238,0.6);line-height:1.75;max-width:340px;font-size:13px;font-weight:300">
+          Heritage embroidery meets a relaxed modern silhouette. The Noor Suit in ivory — worn with minimal gold jewellery and an unhurried pace.
+        </p>
+        <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:10px">
+          <span class="eyebrow" style="color:rgba(247,243,238,0.5);border:1px solid rgba(247,243,238,0.2);padding:7px 14px;font-size:9px;letter-spacing:0.2em">Noor Embroidered Suit</span>
+          <span class="eyebrow" style="color:rgba(247,243,238,0.5);border:1px solid rgba(247,243,238,0.2);padding:7px 14px;font-size:9px;letter-spacing:0.2em">Farah Dupatta Set</span>
+        </div>
+        <a href="#new-arrivals" class="eyebrow" style="color:#c9a86c;border-bottom:1px solid rgba(201,168,108,0.5);padding-bottom:3px;margin-top:28px;display:inline-flex;align-items:center;gap:10px;font-size:9.5px;letter-spacing:0.22em;text-decoration:none">
+          Shop This Look ↗
+        </a>
+      </div>
+    </div>
+
+    <div style="border-top:1px solid rgba(247,243,238,0.1);margin-bottom:72px"></div>
+
+    <!-- Look 02 -->
+    <div class="grid lg:grid-cols-2 gap-6 lg:gap-16 items-center">
+      <div class="reveal" style="order:2">
+        <p class="eyebrow" style="color:#c9a86c;font-size:9px;letter-spacing:0.3em">The second look</p>
+        <h3 class="font-display" style="color:#f7f3ee;margin-top:14px;font-size:clamp(2.2rem,5vw,5rem);font-weight:300;line-height:0.95">
+          Modern<br><em>Muse.</em>
+        </h3>
+        <p style="margin-top:20px;color:rgba(247,243,238,0.6);line-height:1.75;max-width:340px;font-size:13px;font-weight:300">
+          Clean lines, confident energy. The Aira Co-ord in sand — effortless for the woman who moves between cities and worlds.
+        </p>
+        <div style="margin-top:24px;display:flex;flex-wrap:wrap;gap:10px">
+          <span class="eyebrow" style="color:rgba(247,243,238,0.5);border:1px solid rgba(247,243,238,0.2);padding:7px 14px;font-size:9px;letter-spacing:0.2em">Aira Co-ord Set</span>
+          <span class="eyebrow" style="color:rgba(247,243,238,0.5);border:1px solid rgba(247,243,238,0.2);padding:7px 14px;font-size:9px;letter-spacing:0.2em">Rania Top</span>
+        </div>
+        <a href="#new-arrivals" class="eyebrow" style="color:#c9a86c;border-bottom:1px solid rgba(201,168,108,0.5);padding-bottom:3px;margin-top:28px;display:inline-flex;align-items:center;gap:10px;font-size:9.5px;letter-spacing:0.22em;text-decoration:none">
+          Shop This Look ↗
+        </a>
+      </div>
+      <div class="lookbook-panel img-wrap reveal reveal-delay-1" style="aspect-ratio:4/5;order:1">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1000&q=90&auto=format&fit=crop"
+             alt="Look 02 — Modern Muse"
+             onerror="this.src='https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1000&q=85'">
+        <span class="look-label">LOOK 02</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     BRAND STORY — THE HOUSE
+══════════════════════════════════════════ -->
+<section id="story" style="background:#f7f3ee;padding:clamp(60px,8vw,128px) 0">
+  <div class="max-w-screen-2xl mx-auto px-5 lg:px-12">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
+
+      <!-- Image -->
+      <div style="position:relative" class="reveal">
+        <div class="img-wrap" style="aspect-ratio:4/5;max-width:600px">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=1200&q=90&auto=format&fit=crop"
+               alt="ELAHI brand story"
+               onerror="this.src='https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=1200&q=85'">
+        </div>
+        <!-- Floating card -->
+        <div style="position:absolute;bottom:-24px;right:4px;background:#6b2737;color:#f7f3ee;padding:28px 32px;max-width:200px">
+          <span style="color:#c9a86c;font-size:7px">✦</span>
+          <p class="font-display" style="margin-top:12px;font-size:2.2rem;font-weight:300;line-height:1.1">Made to<br>be <em>you.</em></p>
+        </div>
+        <!-- Year tag -->
+        <div style="position:absolute;top:24px;left:-18px;background:#f7f3ee;border:1px solid rgba(28,28,26,0.1);padding:16px;display:none" class="sm:block">
+          <p class="eyebrow" style="color:#6b2737;font-size:9px;letter-spacing:0.3em;writing-mode:vertical-rl;transform:rotate(180deg)">EST. IN STYLE</p>
+        </div>
+      </div>
+
+      <!-- Text -->
+      <div style="padding:28px 0" class="reveal reveal-delay-1">
+        <p class="eyebrow" style="color:#6b2737;letter-spacing:0.28em;display:flex;align-items:center">
+          <span class="gold-line"></span>A note on who we are
+        </p>
+        <h2 class="font-display" style="margin-top:18px;line-height:0.92;font-size:clamp(2.5rem,5.5vw,5.5rem);font-weight:300">
+          More than fashion.<br><em>An expression of you.</em>
+        </h2>
+        <p style="margin-top:28px;line-height:1.9;color:#8a8178;max-width:430px;font-size:13px;font-weight:300">
+          ELAHI was born from a simple belief: that the best fashion doesn't ask you to choose between where you come from and where you're going. We honour the craft of Pakistani artisans — their embroidery, their precision, their generational knowledge — and translate it into pieces that belong equally in Lahore and London.
+        </p>
+        <p style="margin-top:16px;line-height:1.9;color:#8a8178;max-width:430px;font-size:13px;font-weight:300">
+          Every stitch is a story. Every collection, a conversation. This is a house built on intention.
+        </p>
+
+        <!-- Stats -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;padding-top:36px;border-top:1px solid rgba(28,28,26,0.1)">
+          <div>
+            <p class="font-display" style="font-size:2.8rem;font-weight:300;letter-spacing:0.02em">12+</p>
+            <p class="eyebrow" style="color:#8a8178;margin-top:6px;font-size:8.5px;letter-spacing:0.2em">Years of craft</p>
+          </div>
+          <div>
+            <p class="font-display" style="font-size:2.8rem;font-weight:300;letter-spacing:0.02em">40+</p>
+            <p class="eyebrow" style="color:#8a8178;margin-top:6px;font-size:8.5px;letter-spacing:0.2em">Countries reached</p>
+          </div>
+          <div>
+            <p class="font-display" style="font-size:2.8rem;font-weight:300;letter-spacing:0.02em">200+</p>
+            <p class="eyebrow" style="color:#8a8178;margin-top:6px;font-size:8.5px;letter-spacing:0.2em">Annual designs</p>
+          </div>
+        </div>
+
+        <a href="#journal" class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em;border-bottom:1px solid #1c1c1a;padding-bottom:6px;margin-top:36px;display:inline-flex;align-items:center;gap:14px;text-decoration:none;color:#1c1c1a;transition:color 0.2s,border-color 0.2s" onmouseover="this.style.color='#6b2737';this.style.borderColor='#6b2737'" onmouseout="this.style.color='#1c1c1a';this.style.borderColor='#1c1c1a'">
+          Get to know the house ↗
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     JOURNAL
+══════════════════════════════════════════ -->
+<section id="journal" style="background:#ede8e0;padding:clamp(60px,8vw,128px) 0">
+  <div class="max-w-screen-2xl mx-auto px-5 lg:px-12">
+
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
+      <div>
+        <p class="eyebrow reveal" style="color:#6b2737;letter-spacing:0.28em;display:flex;align-items:center">
+          <span class="gold-line"></span>Notes from the house
+        </p>
+        <h2 class="font-display mt-4 reveal reveal-delay-1" style="font-size:clamp(2.5rem,6vw,6rem);font-weight:300;line-height:0.92">
+          The art of the<br><em>in-between.</em>
+        </h2>
+      </div>
+      <span class="eyebrow reveal reveal-delay-2" style="color:#8a8178;font-size:9px;letter-spacing:0.3em">Stories / 001—003</span>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+
+      <article class="reveal" style="cursor:pointer">
+        <div class="img-wrap" style="aspect-ratio:5/4">
+          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=900&q=90&auto=format&fit=crop"
+               alt="The quiet power of silhouette"
+               onerror="this.src='https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=900&q=85'">
+        </div>
+        <p class="eyebrow" style="color:#c9a86c;margin-top:20px;font-size:9px;letter-spacing:0.26em">Style Notes · 04 min</p>
+        <h3 class="font-display" style="margin-top:8px;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:300;line-height:1.1">
+          The quiet power of a good silhouette.
+        </h3>
+        <a href="#" class="eyebrow" style="color:#8a8178;border-bottom:1px solid currentColor;padding-bottom:3px;margin-top:14px;display:inline-block;font-size:9px;letter-spacing:0.2em;text-decoration:none">Read More ↗</a>
+      </article>
+
+      <article class="reveal reveal-delay-1" style="cursor:pointer">
+        <div class="img-wrap" style="aspect-ratio:5/4">
+          <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=900&q=90&auto=format&fit=crop"
+               alt="Tradition, with room to move"
+               onerror="this.src='https://images.unsplash.com/photo-1483985988355-763728e1935b?w=900&q=85'">
+        </div>
+        <p class="eyebrow" style="color:#c9a86c;margin-top:20px;font-size:9px;letter-spacing:0.26em">Inside Elahi · 03 min</p>
+        <h3 class="font-display" style="margin-top:8px;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:300;line-height:1.1">
+          Tradition, with room to move.
+        </h3>
+        <a href="#" class="eyebrow" style="color:#8a8178;border-bottom:1px solid currentColor;padding-bottom:3px;margin-top:14px;display:inline-block;font-size:9px;letter-spacing:0.2em;text-decoration:none">Read More ↗</a>
+      </article>
+
+      <article class="reveal reveal-delay-2" style="cursor:pointer">
+        <div class="img-wrap" style="aspect-ratio:5/4">
+          <img src="https://images.unsplash.com/photo-1573612664822-d7d347da7b80?w=900&q=90&auto=format&fit=crop"
+               alt="Building a wardrobe that feels like you"
+               onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=900&q=85'">
+        </div>
+        <p class="eyebrow" style="color:#c9a86c;margin-top:20px;font-size:9px;letter-spacing:0.26em">The Edit · 05 min</p>
+        <h3 class="font-display" style="margin-top:8px;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:300;line-height:1.1">
+          Building a wardrobe that feels like you.
+        </h3>
+        <a href="#" class="eyebrow" style="color:#8a8178;border-bottom:1px solid currentColor;padding-bottom:3px;margin-top:14px;display:inline-block;font-size:9px;letter-spacing:0.2em;text-decoration:none">Read More ↗</a>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     NEWSLETTER
+══════════════════════════════════════════ -->
+<section style="background:#f7f3ee;border-top:1px solid rgba(28,28,26,0.1);padding:clamp(60px,8vw,128px) 0">
+  <div class="max-w-screen-2xl mx-auto px-5 lg:px-12">
+    <div style="max-width:620px;margin:0 auto;text-align:center" class="reveal">
+      <span style="color:#c9a86c;font-size:7px;letter-spacing:0.4em">✦ &nbsp; ✦ &nbsp; ✦</span>
+      <p class="eyebrow" style="color:#6b2737;margin-top:20px;letter-spacing:0.28em">Stay in the know</p>
+      <h2 class="font-display" style="margin-top:14px;font-size:clamp(2.5rem,6vw,5.5rem);font-weight:300;line-height:0.92">
+        A little note<br><em>from us.</em>
+      </h2>
+      <p style="margin-top:20px;color:#8a8178;line-height:1.75;font-size:13px;font-weight:300">
+        New collections, considered edits, and good things only. No clutter — just the best of ELAHI, delivered to you.
+      </p>
+      <form id="nl-form" style="margin-top:36px;display:flex;flex-direction:column;gap:14px;max-width:460px;margin-left:auto;margin-right:auto" onsubmit="submitNewsletter(event)">
+        <div style="display:flex;flex-wrap:wrap;gap:12px">
+          <input type="email" required placeholder="Your email address" class="nl-input" id="nl-email" style="flex:1;min-width:200px">
+          <button type="submit" class="btn-solid">Sign me up ↗</button>
+        </div>
+      </form>
+      <p class="eyebrow" style="color:#8a8178;margin-top:16px;font-size:8.5px;letter-spacing:0.18em">By subscribing you agree to our Privacy Policy. Unsubscribe any time.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer style="background:#1c1c1a;color:#f7f3ee;padding-top:72px;padding-bottom:36px">
+  <div class="max-w-screen-2xl mx-auto px-5 lg:px-12">
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-12 gap-10" style="padding-bottom:56px;border-bottom:1px solid rgba(247,243,238,0.1)">
+
+      <!-- Brand -->
+      <div style="grid-column:span 2 / span 2" class="lg:col-span-4">
+        <div class="font-display" style="font-size:3.5rem;font-weight:300;letter-spacing:0.2em;line-height:1">ELAHI</div>
+        <p class="eyebrow" style="color:rgba(247,243,238,0.4);font-size:7px;letter-spacing:0.5em;margin-top:4px">CLOTHING HOUSE</p>
+        <p style="color:rgba(247,243,238,0.5);line-height:1.75;max-width:260px;margin-top:24px;font-size:12px;font-weight:300">
+          Rooted in heritage. Open to the world. For every version of you.
+        </p>
+        <div style="display:flex;gap:18px;margin-top:28px">
+          <a href="#" class="eyebrow" style="font-size:9px;letter-spacing:0.22em;color:rgba(247,243,238,0.5);text-decoration:none">IG</a>
+          <a href="#" class="eyebrow" style="font-size:9px;letter-spacing:0.22em;color:rgba(247,243,238,0.5);text-decoration:none">PIN</a>
+          <a href="#" class="eyebrow" style="font-size:9px;letter-spacing:0.22em;color:rgba(247,243,238,0.5);text-decoration:none">FB</a>
+          <a href="#" class="eyebrow" style="font-size:9px;letter-spacing:0.22em;color:rgba(247,243,238,0.5);text-decoration:none">TT</a>
+        </div>
+      </div>
+
+      <!-- Spacer -->
+      <div class="hidden lg:block" style="grid-column:span 1 / span 1"></div>
+
+      <!-- Explore -->
+      <div class="lg:col-span-2">
+        <p class="eyebrow" style="color:#c9a86c;font-size:9px;letter-spacing:0.28em;margin-bottom:20px">Explore</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;font-size:12px;font-weight:300">
+          <li><a href="#new-arrivals" style="color:rgba(247,243,238,0.6);text-decoration:none">New Arrivals</a></li>
+          <li><a href="#collections" style="color:rgba(247,243,238,0.6);text-decoration:none">Shop Collections</a></li>
+          <li><a href="#lookbook" style="color:rgba(247,243,238,0.6);text-decoration:none">Lookbook</a></li>
+          <li><a href="#story" style="color:rgba(247,243,238,0.6);text-decoration:none">Our Story</a></li>
+          <li><a href="#journal" style="color:rgba(247,243,238,0.6);text-decoration:none">Journal</a></li>
+        </ul>
+      </div>
+
+      <!-- Help -->
+      <div class="lg:col-span-2">
+        <p class="eyebrow" style="color:#c9a86c;font-size:9px;letter-spacing:0.28em;margin-bottom:20px">Need a hand?</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:14px;font-size:12px;font-weight:300">
+          <li><a href="#" style="color:rgba(247,243,238,0.6);text-decoration:none">Shipping &amp; Delivery</a></li>
+          <li><a href="#" style="color:rgba(247,243,238,0.6);text-decoration:none">Returns &amp; Exchanges</a></li>
+          <li><a href="#" style="color:rgba(247,243,238,0.6);text-decoration:none">Size Guide</a></li>
+          <li><a href="#" style="color:rgba(247,243,238,0.6);text-decoration:none">Care Instructions</a></li>
+          <li><a href="#" style="color:rgba(247,243,238,0.6);text-decoration:none">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div class="lg:col-span-3">
+        <p class="eyebrow" style="color:#c9a86c;font-size:9px;letter-spacing:0.28em;margin-bottom:20px">Contact</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;font-size:12px;font-weight:300;color:rgba(247,243,238,0.6)">
+          <li>hello@elahiclothing.com</li>
+          <li>+92 300 000 0000</li>
+          <li style="margin-top:8px;line-height:1.6">House of Elahi,<br>Gulberg III, Lahore<br>Pakistan</li>
+        </ul>
+        <div style="margin-top:28px">
+          <p class="eyebrow" style="color:#c9a86c;font-size:9px;letter-spacing:0.28em;margin-bottom:12px">We accept</p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px">
+            <span class="eyebrow" style="color:rgba(247,243,238,0.4);border:1px solid rgba(247,243,238,0.2);padding:5px 10px;font-size:8px;letter-spacing:0.14em">VISA</span>
+            <span class="eyebrow" style="color:rgba(247,243,238,0.4);border:1px solid rgba(247,243,238,0.2);padding:5px 10px;font-size:8px;letter-spacing:0.14em">MASTERCARD</span>
+            <span class="eyebrow" style="color:rgba(247,243,238,0.4);border:1px solid rgba(247,243,238,0.2);padding:5px 10px;font-size:8px;letter-spacing:0.14em">JAZZ CASH</span>
+            <span class="eyebrow" style="color:rgba(247,243,238,0.4);border:1px solid rgba(247,243,238,0.2);padding:5px 10px;font-size:8px;letter-spacing:0.14em">EASYPAISA</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="flex flex-col sm:flex-row sm:justify-between gap-4 items-start sm:items-center" style="padding-top:28px">
+      <span class="eyebrow" style="color:rgba(247,243,238,0.3);font-size:8.5px;letter-spacing:0.2em">© 2026 ELAHI CLOTHING HOUSE. ALL RIGHTS RESERVED.</span>
+      <div style="display:flex;gap:20px">
+        <a href="#" class="eyebrow" style="font-size:8.5px;letter-spacing:0.2em;color:rgba(247,243,238,0.3);text-decoration:none">Privacy Policy</a>
+        <a href="#" class="eyebrow" style="font-size:8.5px;letter-spacing:0.2em;color:rgba(247,243,238,0.3);text-decoration:none">Terms</a>
+        <a href="#" class="eyebrow" style="font-size:8.5px;letter-spacing:0.2em;color:rgba(247,243,238,0.3);text-decoration:none">Cookies</a>
+      </div>
+      <span class="eyebrow" style="color:rgba(247,243,238,0.3);font-size:8.5px;letter-spacing:0.2em">MADE WITH INTENTION · PAKISTAN</span>
+    </div>
+
+  </div>
+</footer>
+
+<!-- Toast -->
+<div id="toast" role="alert" aria-live="polite"></div>
+
+<!-- ══════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════ -->
+<script>
+/* ─── Placeholder HTML for broken images ─── */
+function placeholderImg(name) {
+  return `<div style="width:100%;height:100%;background:#e0d8cc;display:flex;align-items:center;justify-content:center;padding:16px;text-align:center"><span style="font-family:'Jost',sans-serif;font-size:9px;letter-spacing:0.2em;text-transform:uppercase;color:#8a8178">${name}</span></div>`;
+}
+
+/* ─── Toast ─── */
+let _toastTimer;
+function showToast(msg) {
+  const el = document.getElementById('toast');
+  el.textContent = msg;
+  el.classList.add('show');
+  clearTimeout(_toastTimer);
+  _toastTimer = setTimeout(() => el.classList.remove('show'), 2800);
+}
+
+/* ─── Cart ─── */
+let cartCount = 0;
+function addToCart(name) {
+  cartCount++;
+  const badge = document.getElementById('cart-badge');
+  badge.textContent = cartCount;
+  badge.style.display = 'flex';
+  badge.style.transform = 'scale(1.5)';
+  setTimeout(() => badge.style.transform = 'scale(1)', 240);
+  showToast(`${name} added to your bag`);
+}
+
+/* ─── Wishlist ─── */
+function toggleWish(btn, name) {
+  const saved = btn.classList.toggle('saved');
+  btn.textContent = saved ? '♥' : '♡';
+  btn.style.transform = 'scale(1.3)';
+  setTimeout(() => btn.style.transform = '', 230);
+  showToast(saved ? `${name} saved to your wishlist` : `${name} removed from wishlist`);
+}
+
+/* ─── Newsletter ─── */
+function submitNewsletter(e) {
+  e.preventDefault();
+  showToast("Welcome! You're on the list — thank you.");
+  document.getElementById('nl-form').reset();
+}
+
+/* ─── Mobile Nav ─── */
+const menuBtn   = document.getElementById('menu-btn');
+const closeMenu = document.getElementById('close-menu');
+const mobileNav = document.getElementById('mobile-nav');
+const overlay   = document.getElementById('nav-overlay');
+
+function openNav() {
+  mobileNav.classList.add('open');
+  overlay.style.opacity = '1';
+  overlay.style.pointerEvents = 'auto';
+  document.body.style.overflow = 'hidden';
+  menuBtn.setAttribute('aria-expanded', 'true');
+}
+function closeNav() {
+  mobileNav.classList.remove('open');
+  overlay.style.opacity = '0';
+  overlay.style.pointerEvents = 'none';
+  document.body.style.overflow = '';
+  menuBtn.setAttribute('aria-expanded', 'false');
+}
+
+menuBtn.addEventListener('click', openNav);
+closeMenu.addEventListener('click', closeNav);
+overlay.addEventListener('click', closeNav);
+document.querySelectorAll('.mobile-nav-link').forEach(a => a.addEventListener('click', closeNav));
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeNav(); });
+
+/* ─── Accent Tile Hover ─── */
+const accentTile = document.getElementById('accent-tile');
+const accentBg   = document.getElementById('accent-bg');
+const accentEyebrow = document.getElementById('accent-eyebrow');
+const accentH3   = document.getElementById('accent-h3');
+const accentArrow = document.getElementById('accent-arrow');
+
+if (accentTile) {
+  accentTile.addEventListener('mouseenter', () => {
+    accentBg.style.transform = 'translateX(0)';
+    accentEyebrow.style.color = '#c9a86c';
+    accentH3.style.color = '#f7f3ee';
+    accentArrow.style.color = '#f7f3ee';
+  });
+  accentTile.addEventListener('mouseleave', () => {
+    accentBg.style.transform = 'translateX(-100%)';
+    accentEyebrow.style.color = '#6b2737';
+    accentH3.style.color = '#1c1c1a';
+    accentArrow.style.color = '#1c1c1a';
+  });
+}
+
+/* ─── International Accent Tile Hover ─── */
+const intlAccent = document.getElementById('intl-accent');
+const intlBg = document.getElementById('intl-accent-bg');
+if (intlAccent && intlBg) {
+  intlAccent.addEventListener('mouseenter', () => intlBg.style.transform = 'scaleY(1)');
+  intlAccent.addEventListener('mouseleave', () => intlBg.style.transform = 'scaleY(0)');
+}
+
+/* ─── Scroll Reveal ─── */
+const revealEls = document.querySelectorAll('.reveal');
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('in-view');
+      revealObs.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObs.observe(el));
+
+/* ─── Header shadow ─── */
+const header = document.getElementById('site-header');
+window.addEventListener('scroll', () => {
+  header.style.boxShadow = window.scrollY > 60 ? '0 2px 24px rgba(28,28,26,0.07)' : 'none';
+}, { passive: true });
+
+/* ─── Image error fallback ─── */
+const fallbacks = [
+  'https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800&q=80',
+  'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80',
+  'https://images.unsplash.com/photo-1483985988355-763728e1935b?w=800&q=80',
+];
+document.querySelectorAll('img').forEach(img => {
+  img.addEventListener('error', function() {
+    if (!this.dataset.errored) {
+      this.dataset.errored = '1';
+      this.src = fallbacks[Math.floor(Math.random() * fallbacks.length)];
+    }
+  });
+});
+
+/* ─── Page fade-in ─── */
+document.addEventListener('DOMContentLoaded', () => {
+  document.body.style.opacity = '0';
+  document.body.style.transition = 'opacity 0.5s ease';
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    document.body.style.opacity = '1';
+  }));
+});
+</script>
+
+</body>
+</html>
