@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="ELAHI CLOTHING — Shop all collections. Eastern wear, western essentials, co-ords, and more.">
+<title>Collections — ELAHI CLOTHING</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script>
+tailwind.config={theme:{extend:{colors:{ivory:'#f7f3ee',cream:'#ede8e0',burgundy:'#6b2737','burgundy-dark':'#4e1b27',charcoal:'#1c1c1a','warm-gray':'#8a8178',gold:'#c9a86c'},fontFamily:{display:['"Cormorant Garamond"','serif'],body:['Jost','sans-serif']}}}}
+</script>
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#f7f3ee;color:#1c1c1a;font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden}
+.font-display{font-family:'Cormorant Garamond',serif}
+.eyebrow{font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase}
+.img-wrap{overflow:hidden;background:#e8e1d6;display:block;position:relative}
+.img-wrap img{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)}
+.img-wrap:hover img{transform:scale(1.06)}
+.ticker-track{display:flex;width:max-content;animation:ticker 36s linear infinite}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.btn-solid{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;background:#6b2737;color:#f7f3ee;font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;transition:background 0.28s;cursor:pointer;white-space:nowrap;text-decoration:none;border:none}
+.btn-solid:hover{background:#4e1b27}
+.btn-outline{display:inline-flex;align-items:center;gap:10px;padding:14px 32px;border:1px solid currentColor;font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.28em;text-transform:uppercase;transition:background 0.28s,color 0.28s;cursor:pointer;white-space:nowrap;text-decoration:none}
+.btn-outline.dark:hover{background:#1c1c1a;color:#f7f3ee}
+.btn-outline.light:hover{background:rgba(247,243,238,0.15)}
+.product-card{position:relative}
+.quick-add{position:absolute;bottom:0;left:0;right:0;background:rgba(28,28,26,0.92);color:#f7f3ee;padding:14px;text-align:center;font-family:'Jost',sans-serif;font-size:10px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;transform:translateY(100%);transition:transform 0.32s cubic-bezier(0.16,1,0.3,1);cursor:pointer;border:none;width:100%}
+.product-card:hover .quick-add{transform:translateY(0)}
+.wish-btn{position:absolute;top:12px;right:12px;width:36px;height:36px;border-radius:50%;background:rgba(247,243,238,0.92);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;color:#1c1c1a;transition:transform 0.2s;z-index:5}
+.wish-btn:hover{transform:scale(1.12)}
+.wish-btn.saved{color:#6b2737}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity 0.75s ease,transform 0.75s ease}
+.reveal.in-view{opacity:1;transform:translateY(0)}
+.reveal-delay-1{transition-delay:0.1s}.reveal-delay-2{transition-delay:0.2s}.reveal-delay-3{transition-delay:0.3s}
+#mobile-nav{position:fixed;inset:0;z-index:100;background:#f7f3ee;transform:translateX(-100%);transition:transform 0.45s cubic-bezier(0.16,1,0.3,1);display:flex;flex-direction:column;overflow-y:auto}
+#mobile-nav.open{transform:translateX(0)}
+#toast{position:fixed;bottom:28px;left:50%;transform:translateX(-50%) translateY(12px);background:#1c1c1a;color:#f7f3ee;padding:14px 28px;font-family:'Jost',sans-serif;font-size:11px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity 0.25s,transform 0.25s;z-index:999;box-shadow:0 8px 32px rgba(0,0,0,0.2)}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#cart-badge{display:none;position:absolute;top:-6px;right:-8px;background:#6b2737;color:white;font-size:9px;font-weight:500;width:18px;height:18px;border-radius:50%;align-items:center;justify-content:center}
+#cart-badge.show{display:flex}
+.gold-line{display:inline-block;width:44px;height:1px;background:#c9a86c;vertical-align:middle;margin-right:14px}
+.nl-input{background:transparent;border:none;border-bottom:1px solid rgba(28,28,26,0.4);padding:12px 0;font-family:'Jost',sans-serif;font-size:13px;font-weight:300;color:#1c1c1a;outline:none;width:100%;transition:border-color 0.25s}
+.nl-input::placeholder{color:#8a8178}
+.nl-input:focus{border-bottom-color:#1c1c1a}
+footer a{color:inherit;text-decoration:none;transition:color 0.2s}
+footer a:hover{color:#c9a86c}
+nav a{position:relative;padding-bottom:2px;text-decoration:none;color:inherit;transition:color 0.2s;white-space:nowrap}
+nav a::after{content:'';position:absolute;bottom:0;left:0;width:0;height:1px;background:currentColor;transition:width 0.28s}
+nav a:hover::after{width:100%}
+.nav-active::after{width:100% !important}
+
+/* ── Filter toolbar ── */
+#filter-bar{position:sticky;top:76px;z-index:30;background:rgba(247,243,238,0.97);border-bottom:1px solid rgba(28,28,26,0.1);backdrop-filter:blur(6px)}
+.filter-btn{font-family:'Jost',sans-serif;font-size:9.5px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;border:none;background:none;cursor:pointer;padding:0 0 4px;border-bottom:2px solid transparent;color:#8a8178;transition:color 0.2s,border-color 0.2s;white-space:nowrap}
+.filter-btn:hover{color:#1c1c1a}
+.filter-btn.active{color:#6b2737;border-bottom-color:#6b2737}
+
+/* ── Product card entry animation ── */
+.product-item{transition:opacity 0.35s ease,transform 0.35s ease}
+.product-item.hiding{opacity:0;transform:scale(0.97);pointer-events:none}
+
+/* hero */
+.collections-hero{background-image:linear-gradient(to bottom,rgba(28,28,26,0.72) 0%,rgba(28,28,26,0.4) 60%,rgba(28,28,26,0.75) 100%),url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1920&q=90&auto=format&fit=crop');background-size:cover;background-position:center}
+</style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT BAR -->
+<div style="background:#1c1c1a;overflow:hidden;padding:10px 0">
+  <div class="ticker-track">
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">SHOP THE FULL COLLECTION</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">EASTERN &amp; WESTERN WEAR</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">200+ DESIGNS</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">WORLDWIDE SHIPPING</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">FREE DELIVERY OVER PKR 12,000</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">SHOP THE FULL COLLECTION</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">EASTERN &amp; WESTERN WEAR</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">200+ DESIGNS</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">WORLDWIDE SHIPPING</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+    <span class="eyebrow" style="padding:0 32px;font-size:9px;letter-spacing:0.26em;color:#f7f3ee">FREE DELIVERY OVER PKR 12,000</span>
+    <span style="color:#c9a86c;font-size:7px;margin:0 8px">✦</span>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header id="site-header" class="sticky top-0 z-50 border-b border-black/10 transition-all duration-300" style="background:rgba(247,243,238,0.97);backdrop-filter:blur(8px)">
+  <div class="max-w-screen-2xl mx-auto px-5 lg:px-12" style="height:76px;display:flex;align-items:center;justify-content:space-between">
+    <nav class="hidden lg:flex items-center gap-7">
+      <a href="new-arrivals.html" class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em">New Arrivals</a>
+      <a href="women.html" class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em">Women</a>
+      <a href="eastern-wear.html" class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em">Eastern Wear</a>
+      <a href="western-wear.html" class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em">Western Wear</a>
+      <a href="collections.html" class="eyebrow nav-active" style="font-size:9.5px;letter-spacing:0.22em">Collections</a>
+      <a href="sale.html" class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em;color:#6b2737">Sale</a>
+    </nav>
+    <button id="menu-btn" class="lg:hidden eyebrow flex items-center gap-2.5" style="font-size:9.5px;letter-spacing:0.22em" aria-label="Open menu">
+      <span style="display:flex;flex-direction:column;gap:5px">
+        <span style="display:block;width:20px;height:1px;background:#1c1c1a"></span>
+        <span style="display:block;width:20px;height:1px;background:#1c1c1a"></span>
+        <span style="display:block;width:12px;height:1px;background:#1c1c1a"></span>
+      </span>
+      Menu
+    </button>
+    <a href="index.html" style="position:absolute;left:50%;transform:translateX(-50%);text-align:center;text-decoration:none;color:inherit;user-select:none">
+      <span class="font-display" style="font-size:clamp(22px,3vw,30px);font-weight:400;letter-spacing:0.22em;line-height:1;display:block">ELAHI</span>
+      <span class="eyebrow" style="font-size:7px;letter-spacing:0.5em;display:block;margin-top:2px">CLOTHING</span>
+    </a>
+    <div style="display:flex;align-items:center;gap:20px">
+      <button class="hidden md:block eyebrow" style="font-size:9.5px;letter-spacing:0.22em;border:none;background:none;cursor:pointer;color:#1c1c1a" onclick="showToast('Search coming soon')">Search</button>
+      <button class="hidden sm:block eyebrow" style="font-size:9.5px;letter-spacing:0.22em;border:none;background:none;cursor:pointer;color:#1c1c1a" onclick="showToast('Your wishlist is empty')">Wishlist</button>
+      <button class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em;border:none;background:none;cursor:pointer;color:#1c1c1a;position:relative" id="bag-btn" onclick="showToast('Your bag is empty')">Bag<span id="cart-badge">0</span></button>
+    </div>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div id="mobile-nav" role="dialog" aria-modal="true">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:0 24px;height:76px;border-bottom:1px solid rgba(28,28,26,0.1)">
+    <a href="index.html" style="text-decoration:none;color:inherit"><span class="font-display" style="font-size:28px;letter-spacing:0.22em">ELAHI</span></a>
+    <button id="close-menu" class="eyebrow" style="font-size:9.5px;border:none;background:none;cursor:pointer;color:#1c1c1a">Close ✕</button>
+  </div>
+  <nav style="display:flex;flex-direction:column;padding:36px 24px;gap:24px">
+    <a href="new-arrivals.html" class="mobile-nav-link font-display" style="font-size:clamp(28px,8vw,42px);font-weight:300;text-decoration:none;color:#1c1c1a;border-bottom:1px solid rgba(28,28,26,0.08);padding-bottom:20px">New Arrivals</a>
+    <a href="women.html" class="mobile-nav-link font-display" style="font-size:clamp(28px,8vw,42px);font-weight:300;text-decoration:none;color:#1c1c1a;border-bottom:1px solid rgba(28,28,26,0.08);padding-bottom:20px">Women</a>
+    <a href="eastern-wear.html" class="mobile-nav-link font-display" style="font-size:clamp(28px,8vw,42px);font-weight:300;text-decoration:none;color:#1c1c1a;border-bottom:1px solid rgba(28,28,26,0.08);padding-bottom:20px">Eastern Wear</a>
+    <a href="western-wear.html" class="mobile-nav-link font-display" style="font-size:clamp(28px,8vw,42px);font-weight:300;text-decoration:none;color:#1c1c1a;border-bottom:1px solid rgba(28,28,26,0.08);padding-bottom:20px">Western Wear</a>
+    <a href="collections.html" class="mobile-nav-link font-display" style="font-size:clamp(28px,8vw,42px);font-weight:300;text-decoration:none;color:#6b2737;border-bottom:1px solid rgba(28,28,26,0.08);padding-bottom:20px">Collections</a>
+    <a href="sale.html" class="mobile-nav-link font-display" style="font-size:clamp(28px,8vw,42px);font-weight:300;text-decoration:none;color:#6b2737;padding-bottom:20px">Sale</a>
+  </nav>
+  <div style="margin-top:auto;padding:28px 24px;border-top:1px solid rgba(28,28,26,0.1)">
+    <p class="eyebrow" style="color:#8a8178;font-size:9px;margin-bottom:14px">Follow us</p>
+    <div style="display:flex;gap:20px">
+      <a href="#" class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em;text-decoration:none;color:#1c1c1a">Instagram</a>
+      <a href="#" class="eyebrow" style="font-size:9.5px;letter-spacing:0.22em;text-decoration:none;color:#1c1c1a">Pinterest</a>
+    </div>
+  </div>
+</div>
+<div id="nav-overlay" style="position:fixed;inset:0;z-index:40;background:rgba(0,0,0,0.3);opacity:0;pointer-events:none;transition:opacity 0.3s"></div>
+
+<!-- HERO -->
+<section class="collections-hero" style="min-height:48vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:60px 24px">
+  <div class="reveal" style="max-width:720px">
+    <p class="eyebrow" style="color:#c9a86c;letter-spacing:0.3em;display:flex;align-items:center;justify-content:center;margin-bottom:16px">
+      <span class="gold-line" style="background:rgba(201,168,108,0.7)"></span>The Full Collection<span class="gold-line" style="margin-right:0;margin-left:14px;background:rgba(201,168,108,0.7)"></span>
+    </p>
+    <h1 class="font-display" style="color:white;line-height:0.88;font-size:clamp(4rem,10vw,10rem);font-weight:300;letter-spacing:-0.02em">Shop All.</h1>
+    <p style="color:rgba(247,243,238,0.72);max-width:420px;margin:20px auto 0;line-height:1.75;font-size:13px;font-weight:300">
+      200+ designs. Eastern heritage. Western contemporary. All in one place.
+    </p>
+  </div>
+</section>
+
+<!-- FILTER + SORT TOOLBAR -->
+<div id="filter-bar">
+  <div class="max-w-screen-2xl mx-auto px-5 lg:px-12" style="display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px;gap:12px;flex-wrap:wrap">
+    <!-- Filter buttons -->
+    <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap;row-gap:8px">
+      <span class="eyebrow" style="color:#8a8178;font-size:9px;letter-spacing:0.26em;white-space:nowrap">Filter:</span>
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="eastern">Eastern Wear</button>
+      <button class="filter-btn" data-filter="western">Western Wear</button>
+      <button class="filter-btn" data-filter="coords">Co-ords</button>
+      <button class="filter-btn" data-filter="tops">Tops</button>
+      <button class="filter-btn" data-filter="occasion">Occasion</button>
+      <button class="filter-btn" data-filter="sale" style="color:#6b2737">Sale</button>
+    </div>
+    <!-- Count + sort -->
+    <div style="display:flex;align-items:center;gap:16px">
+      <span id="item-count" class="eyebrow" style="color:#8a8178;font-size:9px;letter-spacing:0.2em">Showing 16 pieces</span>
+      <select class="eyebrow" style="font-size:9.5px;letter-spacing:0.18em;border:1px solid rgba(28,28,26,0.2);padding:6px 10px;background:transparent;cursor:pointer;color:#1c1c1a;outline:none">
+        <option>Sort: Newest</option>
+        <option>Price: Low to High</option>
+        <option>Price: High to Low</option>
+        <option>Bestsellers</option>
+      </select>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCTS GRID -->
+<section style="background:#f0ebe3;padding:clamp(40px,6vw,80px) 0">
+  <div class="max-w-screen-2xl mx-auto px-5 lg:px-12">
+    <div id="product-grid" class="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-12 lg:gap-x-6">
+
+      <!-- 1 -->
+      <article class="product-item product-card reveal" data-category="all eastern">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=750&q=90&auto=format&fit=crop" alt="Noor Embroidered Suit" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e0d8cc'">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#f7f3ee;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">Bestseller</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Noor Embroidered Suit')">♡</button>
+          <button class="quick-add" onclick="addToCart('Noor Embroidered Suit')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><h3 style="font-size:13px;font-weight:400">Noor Embroidered Suit</h3><p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Ivory · 3 piece · Eastern</p></div>
+          <span class="eyebrow" style="font-size:10px;font-weight:500;white-space:nowrap">PKR 8,900</span>
+        </div>
+      </article>
+
+      <!-- 2 -->
+      <article class="product-item product-card reveal reveal-delay-1" data-category="all western coords">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=750&q=90&auto=format&fit=crop" alt="Aira Co-ord Set" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e0d8cc'">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#c9a86c;color:white;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">Just In</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Aira Co-ord Set')">♡</button>
+          <button class="quick-add" onclick="addToCart('Aira Co-ord Set')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><h3 style="font-size:13px;font-weight:400">Aira Co-ord Set</h3><p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Sand · 2 piece · Western</p></div>
+          <span class="eyebrow" style="font-size:10px;font-weight:500;white-space:nowrap">PKR 6,500</span>
+        </div>
+      </article>
+
+      <!-- 3 -->
+      <article class="product-item product-card reveal reveal-delay-2" data-category="all eastern">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=750&q=90&auto=format&fit=crop" alt="Farah Chiffon Dupatta Set" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e0d8cc'">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#c9a86c;color:white;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">Staff Pick</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Farah Chiffon Dupatta Set')">♡</button>
+          <button class="quick-add" onclick="addToCart('Farah Chiffon Dupatta Set')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><h3 style="font-size:13px;font-weight:400">Farah Chiffon Dupatta Set</h3><p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Ivory · 2 piece · Eastern</p></div>
+          <span class="eyebrow" style="font-size:10px;font-weight:500;white-space:nowrap">PKR 9,500</span>
+        </div>
+      </article>
+
+      <!-- 4 -->
+      <article class="product-item product-card reveal reveal-delay-3" data-category="all western tops">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=750&q=90&auto=format&fit=crop" alt="Rania Contemporary Top" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e0d8cc'">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#f7f3ee;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">New</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Rania Contemporary Top')">♡</button>
+          <button class="quick-add" onclick="addToCart('Rania Contemporary Top')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><h3 style="font-size:13px;font-weight:400">Rania Contemporary Top</h3><p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Cream · Modern fit · Western</p></div>
+          <span class="eyebrow" style="font-size:10px;font-weight:500;white-space:nowrap">PKR 3,200</span>
+        </div>
+      </article>
+
+      <!-- 5 -->
+      <article class="product-item product-card reveal" data-category="all eastern">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=750&q=90&auto=format&fit=crop" alt="Layla Lawn Suit" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e0d8cc'">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#f7f3ee;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">New</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Layla Lawn Suit')">♡</button>
+          <button class="quick-add" onclick="addToCart('Layla Lawn Suit')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><h3 style="font-size:13px;font-weight:400">Layla Lawn Suit</h3><p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Blush · 3 piece · Eastern</p></div>
+          <span class="eyebrow" style="font-size:10px;font-weight:500;white-space:nowrap">PKR 5,800</span>
+        </div>
+      </article>
+
+      <!-- 6 -->
+      <article class="product-item product-card reveal reveal-delay-1" data-category="all western coords">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=750&q=90&auto=format&fit=crop" alt="Meera Linen Co-ord" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e0d8cc'">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#c9a86c;color:white;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">Just In</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Meera Linen Co-ord')">♡</button>
+          <button class="quick-add" onclick="addToCart('Meera Linen Co-ord')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><h3 style="font-size:13px;font-weight:400">Meera Linen Co-ord</h3><p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Sage · Tailored · Western</p></div>
+          <span class="eyebrow" style="font-size:10px;font-weight:500;white-space:nowrap">PKR 7,100</span>
+        </div>
+      </article>
+
+      <!-- 7 -->
+      <article class="product-item product-card reveal reveal-delay-2" data-category="all eastern occasion">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1573612664822-d7d347da7b80?w=750&q=90&auto=format&fit=crop" alt="Zoya Occasion Suit" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e0d8cc'">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#f7f3ee;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">Limited</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Zoya Occasion Suit')">♡</button>
+          <button class="quick-add" onclick="addToCart('Zoya Occasion Suit')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><h3 style="font-size:13px;font-weight:400">Zoya Occasion Suit</h3><p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Ivory · 3 piece · Occasion</p></div>
+          <span class="eyebrow" style="font-size:10px;font-weight:500;white-space:nowrap">PKR 11,200</span>
+        </div>
+      </article>
+
+      <!-- 8 — sale item -->
+      <article class="product-item product-card reveal reveal-delay-3" data-category="all western sale">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=750&q=90&auto=format&fit=crop" alt="Elan Everyday Shirt" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e0d8cc'">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#6b2737;color:white;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">−20%</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Elan Everyday Shirt')">♡</button>
+          <button class="quick-add" onclick="addToCart('Elan Everyday Shirt')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><h3 style="font-size:13px;font-weight:400">Elan Everyday Shirt</h3><p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Olive · Relaxed · Western</p></div>
+          <div style="text-align:right"><span class="eyebrow" style="font-size:10px;font-weight:500;white-space:nowrap;display:block">PKR 4,200</span><span class="eyebrow" style="font-size:9px;color:#8a8178;text-decoration:line-through;display:block">PKR 5,250</span></div>
+        </div>
+      </article>
+
+      <!-- 9 — sale eastern -->
+      <article class="product-item product-card reveal" data-category="all eastern sale">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1573612664822-d7d347da7b80?w=750&q=85&auto=format&fit=crop" alt="Sana Embellished Kurta" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e0d8cc'">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#6b2737;color:white;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">Sale</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Sana Embellished Kurta')">♡</button>
+          <button class="quick-add" onclick="addToCart('Sana Embellished Kurta')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><h3 style="font-size:13px;font-weight:400">Sana Embellished Kurta</h3><p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Emerald · Classic · Eastern</p></div>
+          <div style="text-align:right"><span class="eyebrow" style="font-size:10px;font-weight:500;white-space:nowrap;display:block">PKR 3,900</span><span class="eyebrow" style="font-size:9px;color:#8a8178;text-decoration:line-through;display:block">PKR 5,500</span></div>
+        </div>
+      </article>
+
+      <!-- 10 -->
+      <article class="product-item product-card reveal reveal-delay-1" data-category="all eastern">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=750&q=85&fit=crop" alt="Hira Embroidered Set" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e0d8cc'">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#f7f3ee;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">New</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Hira Embroidered Set')">♡</button>
+          <button class="quick-add" onclick="addToCart('Hira Embroidered Set')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><h3 style="font-size:13px;font-weight:400">Hira Embroidered Set</h3><p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Peach · 2 piece · Eastern</p></div>
+          <span class="eyebrow" style="font-size:10px;font-weight:500;white-space:nowrap">PKR 7,800</span>
+        </div>
+      </article>
+
+      <!-- 11 -->
+      <article class="product-item product-card reveal reveal-delay-2" data-category="all western tops">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=750&q=85&fit=crop" alt="Amna Chiffon Top" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e0d8cc'">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#f7f3ee;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">New</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Amna Chiffon Top')">♡</button>
+          <button class="quick-add" onclick="addToCart('Amna Chiffon Top')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><h3 style="font-size:13px;font-weight:400">Amna Chiffon Top</h3><p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">White · Minimal · Western</p></div>
+          <span class="eyebrow" style="font-size:10px;font-weight:500;white-space:nowrap">PKR 2,800</span>
+        </div>
+      </article>
+
+      <!-- 12 — sale coords -->
+      <article class="product-item product-card reveal reveal-delay-3" data-category="all western coords sale">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=750&q=85&fit=crop" alt="Sara Co-ord Set" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e0d8cc'">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#6b2737;color:white;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">Sale</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Sara Co-ord Set')">♡</button>
+          <button class="quick-add" onclick="addToCart('Sara Co-ord Set')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><h3 style="font-size:13px;font-weight:400">Sara Co-ord Set</h3><p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Oatmeal · Relaxed · Western</p></div>
+          <div style="text-align:right"><span class="eyebrow" style="font-size:10px;font-weight:500;white-space:nowrap;display:block">PKR 4,100</span><span class="eyebrow" style="font-size:9px;color:#8a8178;text-decoration:line-through;display:block">PKR 5,900</span></div>
+        </div>
+      </article>
+
+      <!-- 13 occasion -->
+      <article class="product-item product-card reveal" data-category="all eastern occasion">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=750&q=85&fit=crop" alt="Nadia Evening Suit" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e0d8cc'">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#f7f3ee;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">Limited</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Nadia Evening Suit')">♡</button>
+          <button class="quick-add" onclick="addToCart('Nadia Evening Suit')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><h3 style="font-size:13px;font-weight:400">Nadia Evening Suit</h3><p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Charcoal · 3 piece · Occasion</p></div>
+          <span class="eyebrow" style="font-size:10px;font-weight:500;white-space:nowrap">PKR 13,500</span>
+        </div>
+      </article>
+
+      <!-- 14 -->
+      <article class="product-item product-card reveal reveal-delay-1" data-category="all western">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=750&q=85&fit=crop" alt="Meera Wide-Leg Set" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e0d8cc'">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#f7f3ee;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">New</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Meera Wide-Leg Set')">♡</button>
+          <button class="quick-add" onclick="addToCart('Meera Wide-Leg Set')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><h3 style="font-size:13px;font-weight:400">Meera Wide-Leg Set</h3><p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Oatmeal · Relaxed · Western</p></div>
+          <span class="eyebrow" style="font-size:10px;font-weight:500;white-space:nowrap">PKR 5,900</span>
+        </div>
+      </article>
+
+      <!-- 15 — sale eastern -->
+      <article class="product-item product-card reveal reveal-delay-2" data-category="all eastern sale">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1525507119028-ed4c629a60a3?w=750&q=85&fit=crop" alt="Rida Lawn 3-Piece" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e0d8cc'">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#6b2737;color:white;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">−33%</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Rida Lawn 3-Piece')">♡</button>
+          <button class="quick-add" onclick="addToCart('Rida Lawn 3-Piece')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><h3 style="font-size:13px;font-weight:400">Rida Lawn 3-Piece</h3><p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Sage · Printed · Eastern</p></div>
+          <div style="text-align:right"><span class="eyebrow" style="font-size:10px;font-weight:500;white-space:nowrap;display:block">PKR 3,200</span><span class="eyebrow" style="font-size:9px;color:#8a8178;text-decoration:line-through;display:block">PKR 4,800</span></div>
+        </div>
+      </article>
+
+      <!-- 16 -->
+      <article class="product-item product-card reveal reveal-delay-3" data-category="all western tops">
+        <div style="position:relative;overflow:hidden;aspect-ratio:3/4;background:#ddd5c8">
+          <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=750&q=85&fit=crop" alt="Dina Linen Top" style="width:100%;height:100%;object-fit:cover;object-position:top;display:block;transition:transform 0.9s cubic-bezier(0.16,1,0.3,1)" onmouseover="this.style.transform='scale(1.06)'" onmouseout="this.style.transform='scale(1)'" onerror="this.parentElement.style.background='#e0d8cc'">
+          <span class="eyebrow" style="position:absolute;top:12px;left:12px;background:#f7f3ee;padding:5px 10px;font-size:8.5px;letter-spacing:0.2em">New</span>
+          <button class="wish-btn" onclick="toggleWish(this,'Dina Linen Top')">♡</button>
+          <button class="quick-add" onclick="addToCart('Dina Linen Top')">Add to Bag +</button>
+        </div>
+        <div style="margin-top:16px;display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+          <div><h3 style="font-size:13px;font-weight:400">Dina Linen Top</h3><p class="eyebrow" style="color:#8a8178;margin-top:7px;font-size:9px;letter-spacing:0.18em">Sand · Minimal · Western</p></div>
+          <span class="eyebrow" style="font-size:10px;font-weight:500;white-space:nowrap">PKR 2,200</span>
+        </div>
+      </article>
+
+    </div><!-- /grid -->
+
+    <!-- Empty state -->
+    <div id="empty-state" style="display:none;text-align:center;padding:80px 20px">
+      <p class="font-display" style="font-size:2rem;font-weight:300;color:#8a8178">No pieces found in this category.</p>
+      <button class="filter-btn active" onclick="resetFilter()" style="margin-top:20px;color:#6b2737;border-bottom:1px solid #6b2737;padding-bottom:4px">View all pieces</button>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section style="background:#f7f3ee;border-top:1px solid rgba(28,28,26,0.1);padding:clamp(60px,8vw,100px) 0">
+  <div class="max-w-screen-2xl mx-auto px-5 lg:px-12">
+    <div style="max-width:580px;margin:0 auto;text-align:center" class="reveal">
+      <span style="color:#c9a86c;font-size:7px;letter-spacing:0.4em">✦ &nbsp; ✦ &nbsp; ✦</span>
+      <p class="eyebrow" style="color:#6b2737;margin-top:18px;letter-spacing:0.28em">Stay in the know</p>
+      <h2 class="font-display" style="margin-top:12px;font-size:clamp(2.5rem,5vw,5rem);font-weight:300;line-height:0.92">New drops,<br><em>delivered to you.</em></h2>
+      <form id="nl-form" style="margin-top:32px;display:flex;flex-wrap:wrap;gap:12px;max-width:440px;margin-left:auto;margin-right:auto" onsubmit="submitNewsletter(event)">
+        <input type="email" required placeholder="Your email address" class="nl-input" style="flex:1;min-width:200px">
+        <button type="submit" class="btn-solid">Sign me up ↗</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer style="background:#1c1c1a;color:#f7f3ee;padding-top:72px;padding-bottom:36px">
+  <div class="max-w-screen-2xl mx-auto px-5 lg:px-12">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10" style="padding-bottom:48px;border-bottom:1px solid rgba(247,243,238,0.1)">
+      <div class="sm:col-span-2 lg:col-span-1">
+        <div class="font-display" style="font-size:3rem;font-weight:300;letter-spacing:0.2em;line-height:1">ELAHI</div>
+        <p class="eyebrow" style="color:rgba(247,243,238,0.4);font-size:7px;letter-spacing:0.5em;margin-top:4px">CLOTHING HOUSE</p>
+        <p style="color:rgba(247,243,238,0.5);line-height:1.75;max-width:220px;margin-top:20px;font-size:12px;font-weight:300">Rooted in heritage. Open to the world. For every version of you.</p>
+      </div>
+      <div>
+        <p class="eyebrow" style="color:#c9a86c;font-size:9px;letter-spacing:0.28em;margin-bottom:18px">Explore</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;font-size:12px;font-weight:300">
+          <li><a href="new-arrivals.html" style="color:rgba(247,243,238,0.6);text-decoration:none">New Arrivals</a></li>
+          <li><a href="women.html" style="color:rgba(247,243,238,0.6);text-decoration:none">Women</a></li>
+          <li><a href="eastern-wear.html" style="color:rgba(247,243,238,0.6);text-decoration:none">Eastern Wear</a></li>
+          <li><a href="western-wear.html" style="color:rgba(247,243,238,0.6);text-decoration:none">Western Wear</a></li>
+          <li><a href="sale.html" style="color:rgba(247,243,238,0.6);text-decoration:none">Sale</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow" style="color:#c9a86c;font-size:9px;letter-spacing:0.28em;margin-bottom:18px">Help</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;font-size:12px;font-weight:300">
+          <li><a href="#" style="color:rgba(247,243,238,0.6);text-decoration:none">Shipping &amp; Delivery</a></li>
+          <li><a href="#" style="color:rgba(247,243,238,0.6);text-decoration:none">Returns &amp; Exchanges</a></li>
+          <li><a href="#" style="color:rgba(247,243,238,0.6);text-decoration:none">Size Guide</a></li>
+          <li><a href="#" style="color:rgba(247,243,238,0.6);text-decoration:none">Contact Us</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="eyebrow" style="color:#c9a86c;font-size:9px;letter-spacing:0.28em;margin-bottom:18px">Contact</p>
+        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;font-size:12px;font-weight:300;color:rgba(247,243,238,0.6)">
+          <li>hello@elahiclothing.com</li>
+          <li>+92 300 000 0000</li>
+          <li style="margin-top:6px;line-height:1.6">Gulberg III, Lahore<br>Pakistan</li>
+        </ul>
+        <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:20px">
+          <span class="eyebrow" style="color:rgba(247,243,238,0.4);border:1px solid rgba(247,243,238,0.2);padding:4px 9px;font-size:8px">VISA</span>
+          <span class="eyebrow" style="color:rgba(247,243,238,0.4);border:1px solid rgba(247,243,238,0.2);padding:4px 9px;font-size:8px">MASTERCARD</span>
+          <span class="eyebrow" style="color:rgba(247,243,238,0.4);border:1px solid rgba(247,243,238,0.2);padding:4px 9px;font-size:8px">JAZZ CASH</span>
+          <span class="eyebrow" style="color:rgba(247,243,238,0.4);border:1px solid rgba(247,243,238,0.2);padding:4px 9px;font-size:8px">EASYPAISA</span>
+        </div>
+      </div>
+    </div>
+    <div class="flex flex-col sm:flex-row sm:justify-between gap-4 items-start sm:items-center" style="padding-top:24px">
+      <span class="eyebrow" style="color:rgba(247,243,238,0.3);font-size:8.5px;letter-spacing:0.2em">© 2026 ELAHI CLOTHING HOUSE. ALL RIGHTS RESERVED.</span>
+      <span class="eyebrow" style="color:rgba(247,243,238,0.3);font-size:8.5px;letter-spacing:0.2em">MADE WITH INTENTION · PAKISTAN</span>
+    </div>
+  </div>
+</footer>
+<div id="toast" role="alert" aria-live="polite"></div>
+
+<script>
+/* ── Core interactions ── */
+let _t,cartCount=0;
+function showToast(msg){const el=document.getElementById('toast');el.textContent=msg;el.classList.add('show');clearTimeout(_t);_t=setTimeout(()=>el.classList.remove('show'),2800)}
+function addToCart(name){cartCount++;const b=document.getElementById('cart-badge');b.textContent=cartCount;b.style.display='flex';b.style.transform='scale(1.5)';setTimeout(()=>b.style.transform='scale(1)',240);showToast(name+' added to your bag')}
+function toggleWish(btn,name){const s=btn.classList.toggle('saved');btn.textContent=s?'♥':'♡';btn.style.transform='scale(1.3)';setTimeout(()=>btn.style.transform='',230);showToast(s?name+' saved to wishlist':name+' removed from wishlist')}
+function submitNewsletter(e){e.preventDefault();showToast("You're on the list — thank you!");document.getElementById('nl-form').reset()}
+
+/* ── Filter logic ── */
+const filterBtns=document.querySelectorAll('.filter-btn');
+const productItems=document.querySelectorAll('.product-item');
+const countEl=document.getElementById('item-count');
+const emptyState=document.getElementById('empty-state');
+
+function applyFilter(cat){
+  let visible=0;
+  productItems.forEach(item=>{
+    const cats=item.dataset.category||'';
+    const show=(cat==='all'||cats.includes(cat));
+    if(show){item.style.display='';visible++;item.classList.remove('hiding')}
+    else{item.classList.add('hiding');setTimeout(()=>{if(item.classList.contains('hiding'))item.style.display='none'},350)}
+  });
+  countEl.textContent=`Showing ${visible} piece${visible!==1?'s':''}`;
+  emptyState.style.display=visible===0?'block':'none';
+}
+
+filterBtns.forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    filterBtns.forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    applyFilter(btn.dataset.filter);
+  });
+});
+
+function resetFilter(){
+  filterBtns.forEach(b=>{b.classList.remove('active');if(b.dataset.filter==='all')b.classList.add('active')});
+  applyFilter('all');
+}
+
+/* ── Mobile nav ── */
+const menuBtn=document.getElementById('menu-btn'),closeMenu=document.getElementById('close-menu'),mobileNav=document.getElementById('mobile-nav'),overlay=document.getElementById('nav-overlay');
+function openNav(){mobileNav.classList.add('open');overlay.style.opacity='1';overlay.style.pointerEvents='auto';document.body.style.overflow='hidden'}
+function closeNav(){mobileNav.classList.remove('open');overlay.style.opacity='0';overlay.style.pointerEvents='none';document.body.style.overflow=''}
+menuBtn.addEventListener('click',openNav);closeMenu.addEventListener('click',closeNav);overlay.addEventListener('click',closeNav);
+document.querySelectorAll('.mobile-nav-link').forEach(a=>a.addEventListener('click',closeNav));
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeNav()});
+
+/* ── Header shadow ── */
+const header=document.getElementById('site-header');
+window.addEventListener('scroll',()=>{header.style.boxShadow=window.scrollY>60?'0 2px 24px rgba(28,28,26,0.07)':'none'},{passive:true});
+
+/* ── Scroll reveal ── */
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in-view');obs.unobserve(e.target)}})},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ── Image fallbacks ── */
+const fb=['https://images.unsplash.com/photo-1529139574466-a303027c1d8b?w=800&q=80','https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&q=80'];
+document.querySelectorAll('img').forEach(img=>img.addEventListener('error',function(){if(!this.dataset.e){this.dataset.e='1';this.src=fb[Math.floor(Math.random()*fb.length)]}}));
+
+/* ── Page fade-in ── */
+document.addEventListener('DOMContentLoaded',()=>{document.body.style.opacity='0';document.body.style.transition='opacity 0.5s ease';requestAnimationFrame(()=>requestAnimationFrame(()=>document.body.style.opacity='1'))});
+</script>
+</body>
+</html>
