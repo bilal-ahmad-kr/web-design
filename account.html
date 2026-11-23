@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Create your ELAHI CLOTHING account to save favourites and manage orders.">
+<title>Account — ELAHI CLOTHING</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:#f7f3ee;color:#1c1c1a;font-family:'Jost',sans-serif;font-weight:300}
+.font-display{font-family:'Cormorant Garamond',serif}
+.eyebrow{font-size:10px;font-weight:500;letter-spacing:.28em;text-transform:uppercase}
+.field{width:100%;border:1px solid rgba(28,28,26,.2);background:transparent;padding:14px 15px;color:#1c1c1a;font:300 14px Jost,sans-serif;outline:0}
+.field:focus{border-color:#6b2737}
+.btn{width:100%;border:0;background:#6b2737;color:#f7f3ee;padding:16px;font:500 10px Jost,sans-serif;letter-spacing:.25em;text-transform:uppercase;cursor:pointer}
+.btn:hover{background:#4e1b27}
+header{background:rgba(247,243,238,.97);backdrop-filter:blur(8px)}
+</style>
+</head>
+<body>
+<header class="sticky top-0 z-10 border-b border-black/10">
+  <div style="height:76px;max-width:1440px;margin:auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;position:relative">
+    <a href="index.html" class="eyebrow" style="color:#1c1c1a;text-decoration:none">Back to shop</a>
+    <a href="index.html" style="position:absolute;left:50%;transform:translateX(-50%);text-align:center;text-decoration:none;color:inherit">
+      <span class="font-display" style="font-size:30px;letter-spacing:.22em;display:block;line-height:1">ELAHI</span>
+      <span class="eyebrow" style="font-size:7px;letter-spacing:.5em;display:block;margin-top:3px">CLOTHING</span>
+    </a>
+    <a href="search.html" class="eyebrow" style="color:#1c1c1a;text-decoration:none">Search</a>
+  </div>
+</header>
+<main style="max-width:520px;margin:auto;padding:90px 24px 140px">
+  <p class="eyebrow" style="color:#6b2737;margin:0 0 16px">Your ELAHI space</p>
+  <h1 class="font-display" style="font-size:clamp(54px,8vw,86px);font-weight:300;line-height:.9;margin:0 0 18px">Create an account.</h1>
+  <p style="color:#8a8178;font-size:13px;line-height:1.7;margin:0 0 36px">Save your favourites, follow orders, and check out faster next time.</p>
+  <form id="account-form">
+    <label class="eyebrow" for="name" style="display:block;color:#8a8178;margin:0 0 8px">Full name</label>
+    <input class="field" id="name" name="name" required autocomplete="name">
+    <label class="eyebrow" for="email" style="display:block;color:#8a8178;margin:22px 0 8px">Email address</label>
+    <input class="field" id="email" name="email" type="email" required autocomplete="email">
+    <label class="eyebrow" for="password" style="display:block;color:#8a8178;margin:22px 0 8px">Password</label>
+    <input class="field" id="password" name="password" type="password" minlength="8" required autocomplete="new-password">
+    <button class="btn" type="submit" style="margin-top:28px">Create account</button>
+  </form>
+  <p id="account-status" role="status" aria-live="polite" style="color:#6b2737;font-size:13px;margin:20px 0 0"></p>
+</main>
+<script>
+document.getElementById('account-form').addEventListener('submit',event=>{
+  event.preventDefault();
+  document.getElementById('account-status').textContent='Your account is ready. Welcome to ELAHI.';
+  event.currentTarget.reset();
+});
+</script>
+</body>
+</html>
